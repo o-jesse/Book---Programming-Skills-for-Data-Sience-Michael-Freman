@@ -1,5 +1,5 @@
-| Course Number | Course Title    | Instructor Name |
-| :-------------| :---------------| :---------------|
-|  0001         | Course A        | John Juan       |
-|  0002         | Course B        | Anthony Graham  |
-|  0003         | Course C        | Martin Jones    |
+| **Course Number** | _Course Title_    | Instructor Name |
+| :-----------------| :-----------------| :---------------|
+|  **0001**         | _Course A_        | John Juan       |
+|  **0002**         | _Course B_        | Anthony Graham  |
+|  **0003**         | _Course C_        | Martin Jones    |
