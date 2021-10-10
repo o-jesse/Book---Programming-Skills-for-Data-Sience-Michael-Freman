@@ -1,6 +1,9 @@
-#git status
+# git status
 ```
+Command:
 ~\filepath>git status
+
+Feedback:
 On branch master
 Your bran is up to date with 'origin/master'.
 
