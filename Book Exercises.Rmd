@@ -1,6 +1,6 @@
 ---
 title: "Book | Programming Skills for Data Science | Exercises"
-author: "Jesse Reinaldo Benetti Duarte de Oliveira"
+author: "Jesse Oliveira"
 date: "09/10/2021"
 output: html_document
 ---
