@@ -6,8 +6,93 @@ output: html_document
 ---
 
 
-## Book Exercises
+# Book Exercises
 
-This is an R Markdown document with a personal solution to the exercises from the book [Programming Skills for Data Science](https://github.com/programming-for-data-science) from Michael Freeman.
+This is an R Markdown document with a personal solution to the exercises from the book [Programming Skills for Data Science](https://github.com/programming-for-data-science) from _Michael Freeman_.
 
-### Chapter 4 - Using Markdown for Documentation
+## Chapter 4 - Using Markdown for Documentation
+
+### Exercise 1
+Using the text-edit of your choice (e.g., Atom), create a new file called README.md. Alternatively, you may clone this repository and edit this file.
+In your README.md document, put your favorite quote in a block quote, and provide a link to a website that provides additional information about the quote.
+Note that you can preview this Markdown in Atom to make sure it works correctly.
+
+**Personal Solution**  
+[README.md](https://github.com/o-jesse/Book---Programming-Skills-for-Data-Sience-Michael-Freman/blob/master/README.md)
+
+### Exercise 2
+Using the text-edit of your choice (e.g., Atom), create a new file called README.md. Alternatively, you may clone this repository and edit this file.
+In your README.md document, make a three column table of the current courses you are taking, with separate columns for course number (in bold), course title (in italics), and instructor name.
+Note that you can preview this Markdown in Atom to make sure it works correctly.
+
+**Personal Soluation**  
+[Exercise 2 | README.md](https://github.com/o-jesse/Book---Programming-Skills-for-Data-Sience-Michael-Freman/blob/master/Exercise%202%20-%20README.md)
+
+### Exercise 3
+Using the text-edit of your choice (e.g., Atom), create a new file called README.md. Alternatively, you may clone this repository and edit this file.
+In your README.md document, provide some information about a terminal command you've learned thus far. In particular, you should include the following:
+- A heading with the name of the command;
+- An example of how it can be used (formatted as a code block);
+- A list of information about the command (i.e., things that it does, or how it can be used).
+_Note that you can preview this Markdown in Atom to make sure it works correctly._
+
+**Personal Solution**  
+[Exercise 3 | README.md](https://github.com/o-jesse/Book---Programming-Skills-for-Data-Sience-Michael-Freman/blob/master/Exercise%203%20-%20README.md)
+
+## Chapter 5
+
+### Exercise 1: practice with basic R syntax
+
+##### Create a variable `hometown` that stores the city in which you were born
+```{r}
+hometown <- "Campo Bom"
+```
+
+##### Assign your name to the variable `my_name`
+```{r}
+my_name <- "Jesse"
+```
+
+##### Assign your height (in inches) to a variable `my_height`
+```{r}
+my_height <- 70.8661
+```
+
+##### Create a variable `puppies` equal to the number of puppies you'd like to have
+```{r}
+puppies <- 3
+```
+
+##### Create a variable `puppy_price`, which is how much you think a puppy costs
+```{r}
+puppy_price <- 1000
+```
+
+##### Create a variable `total_cost` that has the total cost of all of your puppies
+```{r}
+total_cost <- puppies * puppy_price
+total_cost
+```
+
+##### Create a boolean variable `too_expensive`, set to TRUE if the cost is greater 
+##### than $1,000
+```{r}
+too_expensive <- ifelse(total_cost > 1000,
+                        TRUE,
+                        FALSE
+                        )
+too_expensive
+```
+
+##### Create a variable `max_puppies`, which is the number of puppies you can 
+##### afford for $1,000
+```{r}
+max_puppies <- 1000%/%puppy_price # %/% means divide and ignore remainder
+max_puppies
+```
+
+## Chapter 6
+
+
+
+
