@@ -1,0 +1,13 @@
+---
+title: "Book | Programming Skills for Data Science | Exercises"
+author: "Jesse Reinaldo Benetti Duarte de Oliveira"
+date: "09/10/2021"
+output: html_document
+---
+
+
+## Book Exercises
+
+This is an R Markdown document with a personal solution to the exercises from the book [Programming Skills for Data Science](https://github.com/programming-for-data-science) from Michael Freeman.
+
+### Chapter 4 - Using Markdown for Documentation
