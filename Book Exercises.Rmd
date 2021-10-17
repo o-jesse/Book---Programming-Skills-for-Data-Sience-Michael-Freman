@@ -5,6 +5,11 @@ date: "09/10/2021"
 output: html_document
 ---
 
+```{r}
+library(dplyr)
+```
+
+
 
 # Book Exercises
 
@@ -206,20 +211,142 @@ fruits
 #### Store the result in a variable called `fruits_e`
 #### Hint: see http://www.endmemo.com/program/R/sub.php for a simpmle example (or 
 #### use `?gsub`)
+```{r}
+fruits_e <- gsub("a","ee",fruits)
+fruits_e
+```
 
 
 #### Use the `gsub()` function to substitute all the "a"s in `fruits` with "o".
 #### Store the result in a variable called `fruits_o`
+```{r}
+fruits_o <- gsub("a","o",fruits)
+fruits_o
+```
 
 
 #### Create a new variable `lyric_e` that is the `intro` combined with the new
 #### `fruits_e` ending. Print out this variable
-
+```{r}
+lyric_e <- paste(intro,fruits_e)
+print(lyric_e)
+```
 
 #### Without making a new variable, print out the `intro` combined with the new
 #### `fruits_o` ending
+```{r}
+paste(intro,fruits_o)
+```
 
+### Exercise 3: writing and executing functions
 
-### Exercise 3
+#### Define a function `add_three` that takes a single argument and
+#### returns a value 3 greater than the input
+```{r}
+add_three <- function(value) {
+  value + 3
+}
+```
 
+#### Create a variable `ten` that is the result of passing 7 to your `add_three` 
+#### function
+```{r}
+ten <- add_three(7)
+ten
+```
 
+#### Define a function `imperial_to_metric` that takes in two arguments: a number 
+#### of feet and a number of inches
+#### The function should return the equivalent length in meters
+```{r}
+imperial_to_metric <- function(feet,inches) {
+  meters <- ( feet * 0.3048 ) + (inches * 0.0254)
+  meters
+}
+```
+
+#### Create a variable `height_in_meters` by passing your height in imperial to the
+#### `imperial_to_metric` function
+```{r}
+height_in_meters <- imperial_to_metric(5,9.0551)
+height_in_meters
+  
+```
+
+### Exercise 4: functions and conditionals
+
+#### Define a function `is_twice_as_long` that takes in two character strings, and 
+#### returns whether or not (e.g., a boolean) the length of one argument is greater
+#### than or equal to twice the length of the other.
+#### Hint: compare the length difference to the length of the smaller string
+Personal solution:
+```{r}
+is_twice_as_long <- function(string1,string2) {
+  if(nchar(string1) >= nchar(string2)*2 ) {
+    TRUE
+  } else
+  {FALSE}
+}
+```
+
+Book solutions:  -> it is not necessary to use if (conditional) because R already evaluates TRUE or FALSE based on strings lengths.
+```{r}
+is_twice_as_long_book <- function(str1, str2) {
+  diff <- abs(nchar(str1) - nchar(str2))
+  min_length <- min(nchar(str1), nchar(str2))
+  diff >= min_length # if difference is more than short
+}
+```
+
+#### Call your `is_twice_as_long` function by passing it different length strings
+#### to confirm that it works. Make sure to check when _either_ argument is twice
+#### as long, as well as when neither are!
+Personal solution:
+```{r}
+call1 <- is_twice_as_long("lalala","lala")
+call1
+
+call2 <- is_twice_as_long("lalala","la")
+call2
+
+call3 <- is_twice_as_long("lala","la")
+call3
+```
+
+Book solution:
+```{r}
+is_twice_as_long_book("dog", "elephant")
+is_twice_as_long_book("elephant", "dog")
+is_twice_as_long_book("dog", "cat")
+
+```
+
+#### Define a function `describe_difference` that takes in two strings. The
+#### function should return one of the following sentences as appropriate
+####   "Your first string is longer by N characters"
+####   "Your second string is longer by N characters"
+####   "Your strings are the same length!"
+```{r}
+describe_difference <- function(string1,string2) {
+  if (nchar(string1) > nchar(string2) ) {
+    difference <- paste("Your first string is longer by",nchar(string1)-nchar(string2),"characters" )
+  } else if (nchar(string1) < nchar(string2)) {
+    difference <- paste("Your second string is longer by", nchar(string1)-nchar(string2) ,"characters")
+  } else {
+    difference <- "your strings are the same length!"
+  }
+  difference 
+}
+```
+
+#### Call your `describe_difference` function by passing it different length strings
+#### to confirm that it works. Make sure to check all 3 conditions1
+```{r}
+describe_difference("Australia","Brazil")
+```
+```{r}
+describe_difference("Brasil","Italy")
+```
+```{r}
+describe_difference("Sweden","Brazil")
+```
