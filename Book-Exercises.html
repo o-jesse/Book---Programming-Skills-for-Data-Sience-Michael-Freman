@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Jesse Reinaldo Benetti Duarte de Oliveira" />
+<meta name="author" content="Jesse Oliveira" />
 
 <meta name="date" content="2021-09-10" />
 
@@ -166,12 +166,21 @@ pre code {
 
 
 <h1 class="title toc-ignore">Book | Programming Skills for Data Science | Exercises</h1>
-<h4 class="author">Jesse Reinaldo Benetti Duarte de Oliveira</h4>
+<h4 class="author">Jesse Oliveira</h4>
 <h4 class="date">09/10/2021</h4>
 
 </div>
 
 
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
 <div id="book-exercises" class="section level1">
 <h1>Book Exercises</h1>
 <p>This is an R Markdown document with a personal solution to the exercises from the book <a href="https://github.com/programming-for-data-science">Programming Skills for Data Science</a> from <em>Michael Freeman</em>.</p>
@@ -231,18 +240,338 @@ total_cost</code></pre>
 </div>
 <div id="than-1000" class="section level5">
 <h5>than $1,000</h5>
-<pre class="r"><code>too_expensive &lt;- ifelse(puppy_price &gt; 1000,
+<pre class="r"><code>too_expensive &lt;- ifelse(total_cost &gt; 1000,
                         TRUE,
                         FALSE
                         )
 too_expensive</code></pre>
-<pre><code>## [1] FALSE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="create-a-variable-max_puppies-which-is-the-number-of-puppies-you-can" class="section level5">
 <h5>Create a variable <code>max_puppies</code>, which is the number of puppies you can</h5>
 </div>
 <div id="afford-for-1000" class="section level5">
 <h5>afford for $1,000</h5>
+<pre class="r"><code>max_puppies &lt;- 1000%/%puppy_price # %/% means divide and ignore remainder
+max_puppies</code></pre>
+<pre><code>## [1] 1</code></pre>
+</div>
+</div>
+</div>
+<div id="chapter-6" class="section level2">
+<h2>Chapter 6</h2>
+<div id="exercise-1-exercise-1-calling-built-in-functions" class="section level3">
+<h3>Exercise 1: Exercise 1: calling built-in functions</h3>
+<div id="create-a-variable-my_name-that-contains-your-name" class="section level4">
+<h4>Create a variable <code>my_name</code> that contains your name</h4>
+<pre class="r"><code>my_name &lt;- &quot;Jesse&quot;
+my_name</code></pre>
+<pre><code>## [1] &quot;Jesse&quot;</code></pre>
+</div>
+<div id="create-a-variable-name_length-that-holds-how-many-letters-including-spaces" class="section level4">
+<h4>Create a variable <code>name_length</code> that holds how many letters (including spaces)</h4>
+</div>
+<div id="are-in-your-name-use-the-nchar-function" class="section level4">
+<h4>are in your name (use the <code>nchar()</code> function)</h4>
+<pre class="r"><code>name_length &lt;- nchar(&quot;Jesse Oliveira&quot;)</code></pre>
+</div>
+<div id="print-the-number-of-letters-in-your-name" class="section level4">
+<h4>Print the number of letters in your name</h4>
+<pre class="r"><code>name_length</code></pre>
+<pre><code>## [1] 14</code></pre>
+</div>
+<div id="create-a-variable-now_doing-that-is-your-name-followed-by-is-programming" class="section level4">
+<h4>Create a variable <code>now_doing</code> that is your name followed by “is programming!”</h4>
+</div>
+<div id="use-the-paste-function" class="section level4">
+<h4>(use the <code>paste()</code> function)</h4>
+<pre class="r"><code>now_doing &lt;- paste(&quot;Jesse&quot;, &quot;is programming!&quot;)
+now_doing</code></pre>
+<pre><code>## [1] &quot;Jesse is programming!&quot;</code></pre>
+</div>
+<div id="make-the-now_doing-variable-upper-case" class="section level4">
+<h4>Make the <code>now_doing</code> variable upper case</h4>
+<pre class="r"><code>toupper(now_doing)</code></pre>
+<pre><code>## [1] &quot;JESSE IS PROGRAMMING!&quot;</code></pre>
+</div>
+</div>
+<div id="bonus" class="section level3">
+<h3>Bonus</h3>
+<div id="pick-two-of-your-favorite-numbers-between-1-and-100-and-assign-them-to" class="section level4">
+<h4>Pick two of your favorite numbers (between 1 and 100) and assign them to</h4>
+</div>
+<div id="variables-fav_1-and-fav_2" class="section level4">
+<h4>variables <code>fav_1</code> and <code>fav_2</code></h4>
+<pre class="r"><code>fav_1 &lt;- 7
+fav_2 &lt;- 14</code></pre>
+</div>
+<div id="divide-each-number-by-the-square-root-of-201-and-save-the-new-value-in-the" class="section level4">
+<h4>Divide each number by the square root of 201 and save the new value in the</h4>
+</div>
+<div id="original-variable" class="section level4">
+<h4>original variable</h4>
+<pre class="r"><code>fav_1 &lt;- fav_1 / sqrt(201)
+fav_1</code></pre>
+<pre><code>## [1] 0.4937419</code></pre>
+<pre class="r"><code>fav_2 &lt;- fav_2 / sqrt(201)
+fav_2</code></pre>
+<pre><code>## [1] 0.9874839</code></pre>
+</div>
+<div id="create-a-variable-raw_sum-that-is-the-sum-of-the-two-variables.-use-the" class="section level4">
+<h4>Create a variable <code>raw_sum</code> that is the sum of the two variables. Use the</h4>
+</div>
+<div id="sum-function-for-practice." class="section level4">
+<h4><code>sum()</code> function for practice.</h4>
+<pre class="r"><code>raw_sum &lt;- sum(fav_1+fav_2)
+raw_sum</code></pre>
+<pre><code>## [1] 1.481226</code></pre>
+</div>
+<div id="create-a-variable-round_sum-that-is-the-raw_sum-rounded-to-1-decimal-place." class="section level4">
+<h4>Create a variable <code>round_sum</code> that is the <code>raw_sum</code> rounded to 1 decimal place.</h4>
+</div>
+<div id="use-the-round-function." class="section level4">
+<h4>Use the <code>round()</code> function.</h4>
+<pre class="r"><code>round_sum &lt;- round(raw_sum,1)
+round_sum</code></pre>
+<pre><code>## [1] 1.5</code></pre>
+</div>
+<div id="create-two-new-variables-round_1-and-round_2-that-are-your-fav_1-and" class="section level4">
+<h4>Create two new variables <code>round_1</code> and <code>round_2</code> that are your <code>fav_1</code> and</h4>
+</div>
+<div id="fav_2-variables-rounded-to-1-decimal-places" class="section level4">
+<h4><code>fav_2</code> variables rounded to 1 decimal places</h4>
+<pre class="r"><code>round_1 &lt;- round(fav_1,1)
+round_1</code></pre>
+<pre><code>## [1] 0.5</code></pre>
+<pre class="r"><code>round_2 &lt;- round(fav_2,1)
+round_2</code></pre>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="create-a-variable-sum_round-that-is-the-sum-of-the-rounded-values" class="section level4">
+<h4>Create a variable <code>sum_round</code> that is the sum of the rounded values</h4>
+<pre class="r"><code>sum_round &lt;- sum(round_1,round_2)
+sum_round</code></pre>
+<pre><code>## [1] 1.5</code></pre>
+</div>
+<div id="which-is-bigger-round_sum-or-sum_round-you-can-use-the-max-function" class="section level4">
+<h4>Which is bigger, <code>round_sum</code> or <code>sum_round</code>? (You can use the <code>max()</code> function!)</h4>
+<pre class="r"><code>round_sum</code></pre>
+<pre><code>## [1] 1.5</code></pre>
+<pre class="r"><code>sum_round</code></pre>
+<pre><code>## [1] 1.5</code></pre>
+<pre class="r"><code>max(round_sum,sum_round)</code></pre>
+<pre><code>## [1] 1.5</code></pre>
+</div>
+</div>
+<div id="exercise-2-using-built-in-string-functions" class="section level3">
+<h3>Exercise 2: using built-in string functions</h3>
+<div id="create-a-variable-lyric-that-contains-the-text-i-like-to-eat-apples-and" class="section level4">
+<h4>Create a variable <code>lyric</code> that contains the text &quot;I like to eat apples and</h4>
+</div>
+<div id="bananas" class="section level4">
+<h4>bananas&quot;</h4>
+<pre class="r"><code>lyric &lt;- &quot;I like to eat apples and bananas&quot;
+lyric</code></pre>
+<pre><code>## [1] &quot;I like to eat apples and bananas&quot;</code></pre>
+</div>
+<div id="use-the-substr-function-to-extract-the-1st-through-13th-letters-from-the" class="section level4">
+<h4>Use the <code>substr()</code> function to extract the 1st through 13th letters from the</h4>
+</div>
+<div id="lyric-and-store-the-result-in-a-variable-called-intro" class="section level4">
+<h4><code>lyric</code>, and store the result in a variable called <code>intro</code></h4>
+</div>
+<div id="use-substr-to-see-more-about-this-function" class="section level4">
+<h4>Use <code>?substr</code> to see more about this function</h4>
+<pre class="r"><code>intro &lt;- substr(lyric,1,13)
+intro</code></pre>
+<pre><code>## [1] &quot;I like to eat&quot;</code></pre>
+</div>
+<div id="use-the-substr-function-to-extract-the-15th-through-the-last-letter-of-the" class="section level4">
+<h4>Use the <code>substr()</code> function to extract the 15th through the last letter of the</h4>
+</div>
+<div id="lyric-and-store-the-result-in-a-variable-called-fruits" class="section level4">
+<h4><code>lyric</code>, and store the result in a variable called <code>fruits</code></h4>
+</div>
+<div id="hint-use-nchar-to-determine-how-many-total-letters-there-are" class="section level4">
+<h4>Hint: use <code>nchar()</code> to determine how many total letters there are!</h4>
+<pre class="r"><code>fruits &lt;- substr(lyric,15,nchar(lyric))
+fruits</code></pre>
+<pre><code>## [1] &quot;apples and bananas&quot;</code></pre>
+</div>
+<div id="use-the-gsub-function-to-substitute-all-the-as-in-fruits-with-ee." class="section level4">
+<h4>Use the <code>gsub()</code> function to substitute all the “a”s in <code>fruits</code> with “ee”.</h4>
+</div>
+<div id="store-the-result-in-a-variable-called-fruits_e" class="section level4">
+<h4>Store the result in a variable called <code>fruits_e</code></h4>
+</div>
+<div id="hint-see-httpwww.endmemo.comprogramrsub.php-for-a-simpmle-example-or" class="section level4">
+<h4>Hint: see <a href="http://www.endmemo.com/program/R/sub.php" class="uri">http://www.endmemo.com/program/R/sub.php</a> for a simpmle example (or</h4>
+</div>
+<div id="use-gsub" class="section level4">
+<h4>use <code>?gsub</code>)</h4>
+<pre class="r"><code>fruits_e &lt;- gsub(&quot;a&quot;,&quot;ee&quot;,fruits)
+fruits_e</code></pre>
+<pre><code>## [1] &quot;eepples eend beeneenees&quot;</code></pre>
+</div>
+<div id="use-the-gsub-function-to-substitute-all-the-as-in-fruits-with-o." class="section level4">
+<h4>Use the <code>gsub()</code> function to substitute all the “a”s in <code>fruits</code> with “o”.</h4>
+</div>
+<div id="store-the-result-in-a-variable-called-fruits_o" class="section level4">
+<h4>Store the result in a variable called <code>fruits_o</code></h4>
+<pre class="r"><code>fruits_o &lt;- gsub(&quot;a&quot;,&quot;o&quot;,fruits)
+fruits_o</code></pre>
+<pre><code>## [1] &quot;opples ond bononos&quot;</code></pre>
+</div>
+<div id="create-a-new-variable-lyric_e-that-is-the-intro-combined-with-the-new" class="section level4">
+<h4>Create a new variable <code>lyric_e</code> that is the <code>intro</code> combined with the new</h4>
+</div>
+<div id="fruits_e-ending.-print-out-this-variable" class="section level4">
+<h4><code>fruits_e</code> ending. Print out this variable</h4>
+<pre class="r"><code>lyric_e &lt;- paste(intro,fruits_e)
+print(lyric_e)</code></pre>
+<pre><code>## [1] &quot;I like to eat eepples eend beeneenees&quot;</code></pre>
+</div>
+<div id="without-making-a-new-variable-print-out-the-intro-combined-with-the-new" class="section level4">
+<h4>Without making a new variable, print out the <code>intro</code> combined with the new</h4>
+</div>
+<div id="fruits_o-ending" class="section level4">
+<h4><code>fruits_o</code> ending</h4>
+<pre class="r"><code>paste(intro,fruits_o)</code></pre>
+<pre><code>## [1] &quot;I like to eat opples ond bononos&quot;</code></pre>
+</div>
+</div>
+<div id="exercise-3-writing-and-executing-functions" class="section level3">
+<h3>Exercise 3: writing and executing functions</h3>
+<div id="define-a-function-add_three-that-takes-a-single-argument-and" class="section level4">
+<h4>Define a function <code>add_three</code> that takes a single argument and</h4>
+</div>
+<div id="returns-a-value-3-greater-than-the-input" class="section level4">
+<h4>returns a value 3 greater than the input</h4>
+<pre class="r"><code>add_three &lt;- function(value) {
+  value + 3
+}</code></pre>
+</div>
+<div id="create-a-variable-ten-that-is-the-result-of-passing-7-to-your-add_three" class="section level4">
+<h4>Create a variable <code>ten</code> that is the result of passing 7 to your <code>add_three</code></h4>
+</div>
+<div id="function" class="section level4">
+<h4>function</h4>
+<pre class="r"><code>ten &lt;- add_three(7)
+ten</code></pre>
+<pre><code>## [1] 10</code></pre>
+</div>
+<div id="define-a-function-imperial_to_metric-that-takes-in-two-arguments-a-number" class="section level4">
+<h4>Define a function <code>imperial_to_metric</code> that takes in two arguments: a number</h4>
+</div>
+<div id="of-feet-and-a-number-of-inches" class="section level4">
+<h4>of feet and a number of inches</h4>
+</div>
+<div id="the-function-should-return-the-equivalent-length-in-meters" class="section level4">
+<h4>The function should return the equivalent length in meters</h4>
+<pre class="r"><code>imperial_to_metric &lt;- function(feet,inches) {
+  meters &lt;- ( feet * 0.3048 ) + (inches * 0.0254)
+  meters
+}</code></pre>
+</div>
+<div id="create-a-variable-height_in_meters-by-passing-your-height-in-imperial-to-the" class="section level4">
+<h4>Create a variable <code>height_in_meters</code> by passing your height in imperial to the</h4>
+</div>
+<div id="imperial_to_metric-function" class="section level4">
+<h4><code>imperial_to_metric</code> function</h4>
+<pre class="r"><code>height_in_meters &lt;- imperial_to_metric(5,9.0551)
+height_in_meters</code></pre>
+<pre><code>## [1] 1.754</code></pre>
+</div>
+</div>
+<div id="exercise-4-functions-and-conditionals" class="section level3">
+<h3>Exercise 4: functions and conditionals</h3>
+<div id="define-a-function-is_twice_as_long-that-takes-in-two-character-strings-and" class="section level4">
+<h4>Define a function <code>is_twice_as_long</code> that takes in two character strings, and</h4>
+</div>
+<div id="returns-whether-or-not-e.g.-a-boolean-the-length-of-one-argument-is-greater" class="section level4">
+<h4>returns whether or not (e.g., a boolean) the length of one argument is greater</h4>
+</div>
+<div id="than-or-equal-to-twice-the-length-of-the-other." class="section level4">
+<h4>than or equal to twice the length of the other.</h4>
+</div>
+<div id="hint-compare-the-length-difference-to-the-length-of-the-smaller-string" class="section level4">
+<h4>Hint: compare the length difference to the length of the smaller string</h4>
+<p>Personal solution:</p>
+<pre class="r"><code>is_twice_as_long &lt;- function(string1,string2) {
+  if(nchar(string1) &gt;= nchar(string2)*2 ) {
+    TRUE
+  } else
+  {FALSE}
+}</code></pre>
+<p>Book solutions: -&gt; it is not necessary to use if (conditional) because R already evaluates TRUE or FALSE based on strings lengths.</p>
+<pre class="r"><code>is_twice_as_long_book &lt;- function(str1, str2) {
+  diff &lt;- abs(nchar(str1) - nchar(str2))
+  min_length &lt;- min(nchar(str1), nchar(str2))
+  diff &gt;= min_length # if difference is more than short
+}</code></pre>
+</div>
+<div id="call-your-is_twice_as_long-function-by-passing-it-different-length-strings" class="section level4">
+<h4>Call your <code>is_twice_as_long</code> function by passing it different length strings</h4>
+</div>
+<div id="to-confirm-that-it-works.-make-sure-to-check-when-either-argument-is-twice" class="section level4">
+<h4>to confirm that it works. Make sure to check when <em>either</em> argument is twice</h4>
+</div>
+<div id="as-long-as-well-as-when-neither-are" class="section level4">
+<h4>as long, as well as when neither are!</h4>
+<p>Personal solution:</p>
+<pre class="r"><code>call1 &lt;- is_twice_as_long(&quot;lalala&quot;,&quot;lala&quot;)
+call1</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code>call2 &lt;- is_twice_as_long(&quot;lalala&quot;,&quot;la&quot;)
+call2</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>call3 &lt;- is_twice_as_long(&quot;lala&quot;,&quot;la&quot;)
+call3</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Book solution:</p>
+<pre class="r"><code>is_twice_as_long_book(&quot;dog&quot;, &quot;elephant&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>is_twice_as_long_book(&quot;elephant&quot;, &quot;dog&quot;)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code>is_twice_as_long_book(&quot;dog&quot;, &quot;cat&quot;)</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="define-a-function-describe_difference-that-takes-in-two-strings.-the" class="section level4">
+<h4>Define a function <code>describe_difference</code> that takes in two strings. The</h4>
+</div>
+<div id="function-should-return-one-of-the-following-sentences-as-appropriate" class="section level4">
+<h4>function should return one of the following sentences as appropriate</h4>
+</div>
+<div id="your-first-string-is-longer-by-n-characters" class="section level4">
+<h4>“Your first string is longer by N characters”</h4>
+</div>
+<div id="your-second-string-is-longer-by-n-characters" class="section level4">
+<h4>“Your second string is longer by N characters”</h4>
+</div>
+<div id="your-strings-are-the-same-length" class="section level4">
+<h4>“Your strings are the same length!”</h4>
+<pre class="r"><code>describe_difference &lt;- function(string1,string2) {
+  if (nchar(string1) &gt; nchar(string2) ) {
+    difference &lt;- paste(&quot;Your first string is longer by&quot;,nchar(string1)-nchar(string2),&quot;characters&quot; )
+  } else if (nchar(string1) &lt; nchar(string2)) {
+    difference &lt;- paste(&quot;Your second string is longer by&quot;, nchar(string1)-nchar(string2) ,&quot;characters&quot;)
+  } else {
+    difference &lt;- &quot;your strings are the same length!&quot;
+  }
+  difference 
+}</code></pre>
+</div>
+<div id="call-your-describe_difference-function-by-passing-it-different-length-strings" class="section level4">
+<h4>Call your <code>describe_difference</code> function by passing it different length strings</h4>
+</div>
+<div id="to-confirm-that-it-works.-make-sure-to-check-all-3-conditions1" class="section level4">
+<h4>to confirm that it works. Make sure to check all 3 conditions1</h4>
+<pre class="r"><code>describe_difference(&quot;Australia&quot;,&quot;Brazil&quot;)</code></pre>
+<pre><code>## [1] &quot;Your first string is longer by 3 characters&quot;</code></pre>
+<pre class="r"><code>describe_difference(&quot;Brasil&quot;,&quot;Italy&quot;)</code></pre>
+<pre><code>## [1] &quot;Your first string is longer by 1 characters&quot;</code></pre>
+<pre class="r"><code>describe_difference(&quot;Sweden&quot;,&quot;Brazil&quot;)</code></pre>
+<pre><code>## [1] &quot;your strings are the same length!&quot;</code></pre>
 </div>
 </div>
 </div>

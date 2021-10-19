@@ -350,3 +350,201 @@ describe_difference("Brasil","Italy")
 ```{r}
 describe_difference("Sweden","Brazil")
 ```
+
+### Chapter 7
+
+#### Exercise 1: creating and operating on vectors
+
+#### Create a vector `names` that contains your name and the names of 2 people 
+#### next to you. Print the vector.
+```{r}
+names <- c("Jesse","John","Doe")
+print(names)
+```
+
+#### Use the colon operator : to create a vector `n` of numbers from 10:49
+```{r}
+n <- 10:49
+n
+```
+
+#### Use the `length()` function to get the number of elements in `n`
+```{r}
+length(n)
+```
+
+#### Add 1 to each element in `n` and print the result
+```{r}
+print(n +1)
+```
+
+#### Create a vector `m` that contains the numbers 10 to 1 (in that order). 
+#### Hint: use the `seq()` function
+```{r}
+m <- seq(from=10,to=1)
+m
+```
+
+#### Subtract `m` FROM `n`. Note the recycling!
+```{r}
+n - m
+```
+
+#### Use the `seq()` function to produce a range of numbers from -5 to 10 in `0.1`
+#### increments. Store it in a variable `x_range`
+```{r}
+x_range <- seq(from=-5,to=10,by=0.1)
+x_range
+```
+
+#### Create a vector `sin_wave` by calling the `sin()` function on each element 
+#### in `x_range`.
+```{r}
+sin_wave <- sin(x_range)
+sin_wave
+```
+
+#### Create a vector `cos_wave` by calling the `cos()` function on each element 
+#### in `x_range`.
+```{r}
+cos_wave <- cos(x_range)
+cos_wave
+```
+
+#### Create a vector `wave` by multiplying `sin_wave` and `cos_wave` together, then
+#### adding `sin_wave` to the product
+```{r}
+wave <- (sin_wave * cos_wave) + sin_wave
+wave
+```
+
+#### Use the `plot()` function to plot your `wave`!
+```{r}
+plot(wave)
+```
+
+### Exercise 2: indexing and filtering vectors
+
+#### Create a vector `first_ten` that has the values 10 through 20 in it (using 
+#### the : operator)
+```{r}
+first_ten <- 10:20
+first_ten
+```
+
+#### Create a vector `next_ten` that has the values 21 through 30 in it (using the 
+#### seq() function)
+```{r}
+next_ten <- seq(from=21,to=30)
+next_ten
+```
+
+#### Create a vector `all_numbers` by combining the previous two vectors
+```{r}
+all_numbers <- c(first_ten,next_ten)
+all_numbers
+```
+
+#### Create a variable `eleventh` that contains the 11th element in `all_numbers`
+```{r}
+eleventh <- all_numbers[11]
+eleventh
+```
+
+#### Create a vector `some_numbers` that contains the 2nd through the 5th elements 
+#### of `all_numbers`
+```{r}
+some_numbers <- all_numbers[2:5]
+some_numbers
+```
+
+#### Create a vector `even` that holds the even numbers from 1 to 100
+```{r}
+even <- seq(from=2,to=100, by=2)
+even
+```
+
+#### Using the `all()` function and `%%` (modulo) operator, confirm that all of the
+#### numbers in your `even` vector are even
+```{r}
+
+```
+
+#### Create a vector `phone_numbers` that contains the numbers 8, 6, 7, 5, 3, 0, 9
+```{r}
+phone_numbers <- c(8,6,7,5,3,0,9)
+phone_numbers
+```
+
+#### Create a vector `prefix` that has the first three elements of `phone_numbers`
+```{r}
+prefix <- phone_numbers[1:3]
+prefix
+```
+
+#### Create a vector `small` that has the values of `phone_numbers` that are 
+#### less than or equal to 5
+```{r}
+small <- phone_numbers[phone_numbers <= 5]
+small
+```
+
+#### Create a vector `large` that has the values of `phone_numbers` that are 
+#### strictly greater than 5
+```{r}
+large <- phone_numbers[phone_numbers > 5]
+large
+```
+
+#### Replace the values in `phone_numbers` that are larger than 5 with the number 5
+```{r}
+phone_numbers[phone_numbers > 5] <- 5
+phone_numbers
+```
+
+#### Replace every odd-numbered value in `phone_numbers` with the number 0
+
+
+### Exercise 3: vector practice
+
+#### Create a vector `words` of 6 (or more) words.
+#### You can Google for a "random word generator" if you wish!
+```{r}
+words <- c("table", "desk", "microscope", "laptop","keyboard","mouse")
+words
+```
+
+#### Create a vector `words_of_the_day` that is your `words` vector with the string
+#### "is the word of the day!" pasted on to the end.
+#### BONUS: Surround the word in quotes (e.g., `'data' is the word of the day!`)
+#### Note that the results are more obviously correct with single quotes.
+```{r}
+words_of_the_day <- paste(words, "is the word of the day!")
+words_of_the_day
+```
+
+
+#### Create a vector `a_f_words` which are the elements in `words` that start with 
+#### "a" through "f"
+#### Hint: use a comparison operator to see if the word comes before "f" alphabetically!
+#### Tip: make sure all the words are lower-case, and only consider the first letter
+#### of the word!
+
+
+#### Create a vector `g_m_words` which are the elements in `words` that start with 
+#### "g" through "m"
+
+
+#### Define a function `word_bin` that takes in three arguments: a vector of words, 
+#### and two letters. The function should return a vector of words that go between 
+#### those letters alphabetically.
+
+
+#### Use your `word_bin` function to determine which of your words start with "e" 
+#### through "q"
+
+
+
+
+
+
