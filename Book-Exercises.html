@@ -172,15 +172,6 @@ pre code {
 </div>
 
 
-<pre class="r"><code>library(dplyr)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
 <div id="book-exercises" class="section level1">
 <h1>Book Exercises</h1>
 <p>This is an R Markdown document with a personal solution to the exercises from the book <a href="https://github.com/programming-for-data-science">Programming Skills for Data Science</a> from <em>Michael Freeman</em>.</p>
@@ -503,7 +494,7 @@ height_in_meters</code></pre>
   } else
   {FALSE}
 }</code></pre>
-<p>Book solutions: -&gt; it is not necessary to use if (conditional) because R already evaluates TRUE or FALSE based on strings lengths.</p>
+<p>Book solution: -&gt; it is not necessary to use if (conditional) because R already evaluates TRUE or FALSE based on strings lengths.</p>
 <pre class="r"><code>is_twice_as_long_book &lt;- function(str1, str2) {
   diff &lt;- abs(nchar(str1) - nchar(str2))
   min_length &lt;- min(nchar(str1), nchar(str2))
@@ -564,14 +555,847 @@ call3</code></pre>
 <div id="call-your-describe_difference-function-by-passing-it-different-length-strings" class="section level4">
 <h4>Call your <code>describe_difference</code> function by passing it different length strings</h4>
 </div>
-<div id="to-confirm-that-it-works.-make-sure-to-check-all-3-conditions1" class="section level4">
-<h4>to confirm that it works. Make sure to check all 3 conditions1</h4>
+<div id="to-confirm-that-it-works.-make-sure-to-check-all-3-conditions" class="section level4">
+<h4>to confirm that it works. Make sure to check all 3 conditions</h4>
 <pre class="r"><code>describe_difference(&quot;Australia&quot;,&quot;Brazil&quot;)</code></pre>
 <pre><code>## [1] &quot;Your first string is longer by 3 characters&quot;</code></pre>
 <pre class="r"><code>describe_difference(&quot;Brasil&quot;,&quot;Italy&quot;)</code></pre>
 <pre><code>## [1] &quot;Your first string is longer by 1 characters&quot;</code></pre>
 <pre class="r"><code>describe_difference(&quot;Sweden&quot;,&quot;Brazil&quot;)</code></pre>
 <pre><code>## [1] &quot;your strings are the same length!&quot;</code></pre>
+</div>
+</div>
+<div id="chapter-7" class="section level3">
+<h3>Chapter 7</h3>
+<div id="exercise-1-creating-and-operating-on-vectors" class="section level4">
+<h4>Exercise 1: creating and operating on vectors</h4>
+</div>
+<div id="create-a-vector-names-that-contains-your-name-and-the-names-of-2-people" class="section level4">
+<h4>Create a vector <code>names</code> that contains your name and the names of 2 people</h4>
+</div>
+<div id="next-to-you.-print-the-vector." class="section level4">
+<h4>next to you. Print the vector.</h4>
+<pre class="r"><code>names &lt;- c(&quot;Jesse&quot;,&quot;John&quot;,&quot;Doe&quot;)
+print(names)</code></pre>
+<pre><code>## [1] &quot;Jesse&quot; &quot;John&quot;  &quot;Doe&quot;</code></pre>
+</div>
+<div id="use-the-colon-operator-to-create-a-vector-n-of-numbers-from-1049" class="section level4">
+<h4>Use the colon operator : to create a vector <code>n</code> of numbers from 10:49</h4>
+<pre class="r"><code>n &lt;- 10:49
+n</code></pre>
+<pre><code>##  [1] 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34
+## [26] 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49</code></pre>
+</div>
+<div id="use-the-length-function-to-get-the-number-of-elements-in-n" class="section level4">
+<h4>Use the <code>length()</code> function to get the number of elements in <code>n</code></h4>
+<pre class="r"><code>length(n)</code></pre>
+<pre><code>## [1] 40</code></pre>
+</div>
+<div id="add-1-to-each-element-in-n-and-print-the-result" class="section level4">
+<h4>Add 1 to each element in <code>n</code> and print the result</h4>
+<pre class="r"><code>print(n +1)</code></pre>
+<pre><code>##  [1] 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35
+## [26] 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50</code></pre>
+</div>
+<div id="create-a-vector-m-that-contains-the-numbers-10-to-1-in-that-order." class="section level4">
+<h4>Create a vector <code>m</code> that contains the numbers 10 to 1 (in that order).</h4>
+</div>
+<div id="hint-use-the-seq-function" class="section level4">
+<h4>Hint: use the <code>seq()</code> function</h4>
+<pre class="r"><code>m &lt;- seq(from=10,to=1)
+m</code></pre>
+<pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1</code></pre>
+</div>
+<div id="subtract-m-from-n.-note-the-recycling" class="section level4">
+<h4>Subtract <code>m</code> FROM <code>n</code>. Note the recycling!</h4>
+<pre class="r"><code>n - m</code></pre>
+<pre><code>##  [1]  0  2  4  6  8 10 12 14 16 18 10 12 14 16 18 20 22 24 26 28 20 22 24 26 28
+## [26] 30 32 34 36 38 30 32 34 36 38 40 42 44 46 48</code></pre>
+</div>
+<div id="use-the-seq-function-to-produce-a-range-of-numbers-from--5-to-10-in-0.1" class="section level4">
+<h4>Use the <code>seq()</code> function to produce a range of numbers from -5 to 10 in <code>0.1</code></h4>
+</div>
+<div id="increments.-store-it-in-a-variable-x_range" class="section level4">
+<h4>increments. Store it in a variable <code>x_range</code></h4>
+<pre class="r"><code>x_range &lt;- seq(from=-5,to=10,by=0.1)
+x_range</code></pre>
+<pre><code>##   [1] -5.0 -4.9 -4.8 -4.7 -4.6 -4.5 -4.4 -4.3 -4.2 -4.1 -4.0 -3.9 -3.8 -3.7 -3.6
+##  [16] -3.5 -3.4 -3.3 -3.2 -3.1 -3.0 -2.9 -2.8 -2.7 -2.6 -2.5 -2.4 -2.3 -2.2 -2.1
+##  [31] -2.0 -1.9 -1.8 -1.7 -1.6 -1.5 -1.4 -1.3 -1.2 -1.1 -1.0 -0.9 -0.8 -0.7 -0.6
+##  [46] -0.5 -0.4 -0.3 -0.2 -0.1  0.0  0.1  0.2  0.3  0.4  0.5  0.6  0.7  0.8  0.9
+##  [61]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3  2.4
+##  [76]  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7  3.8  3.9
+##  [91]  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1  5.2  5.3  5.4
+## [106]  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5  6.6  6.7  6.8  6.9
+## [121]  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9  8.0  8.1  8.2  8.3  8.4
+## [136]  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3  9.4  9.5  9.6  9.7  9.8  9.9
+## [151] 10.0</code></pre>
+</div>
+<div id="create-a-vector-sin_wave-by-calling-the-sin-function-on-each-element" class="section level4">
+<h4>Create a vector <code>sin_wave</code> by calling the <code>sin()</code> function on each element</h4>
+</div>
+<div id="in-x_range." class="section level4">
+<h4>in <code>x_range</code>.</h4>
+<pre class="r"><code>sin_wave &lt;- sin(x_range)
+sin_wave</code></pre>
+<pre><code>##   [1]  0.95892427  0.98245261  0.99616461  0.99992326  0.99369100  0.97753012
+##   [7]  0.95160207  0.91616594  0.87157577  0.81827711  0.75680250  0.68776616
+##  [13]  0.61185789  0.52983614  0.44252044  0.35078323  0.25554110  0.15774569
+##  [19]  0.05837414 -0.04158066 -0.14112001 -0.23924933 -0.33498815 -0.42737988
+##  [25] -0.51550137 -0.59847214 -0.67546318 -0.74570521 -0.80849640 -0.86320937
+##  [31] -0.90929743 -0.94630009 -0.97384763 -0.99166481 -0.99957360 -0.99749499
+##  [37] -0.98544973 -0.96355819 -0.93203909 -0.89120736 -0.84147098 -0.78332691
+##  [43] -0.71735609 -0.64421769 -0.56464247 -0.47942554 -0.38941834 -0.29552021
+##  [49] -0.19866933 -0.09983342  0.00000000  0.09983342  0.19866933  0.29552021
+##  [55]  0.38941834  0.47942554  0.56464247  0.64421769  0.71735609  0.78332691
+##  [61]  0.84147098  0.89120736  0.93203909  0.96355819  0.98544973  0.99749499
+##  [67]  0.99957360  0.99166481  0.97384763  0.94630009  0.90929743  0.86320937
+##  [73]  0.80849640  0.74570521  0.67546318  0.59847214  0.51550137  0.42737988
+##  [79]  0.33498815  0.23924933  0.14112001  0.04158066 -0.05837414 -0.15774569
+##  [85] -0.25554110 -0.35078323 -0.44252044 -0.52983614 -0.61185789 -0.68776616
+##  [91] -0.75680250 -0.81827711 -0.87157577 -0.91616594 -0.95160207 -0.97753012
+##  [97] -0.99369100 -0.99992326 -0.99616461 -0.98245261 -0.95892427 -0.92581468
+## [103] -0.88345466 -0.83226744 -0.77276449 -0.70554033 -0.63126664 -0.55068554
+## [109] -0.46460218 -0.37387666 -0.27941550 -0.18216250 -0.08308940  0.01681390
+## [115]  0.11654920  0.21511999  0.31154136  0.40484992  0.49411335  0.57843976
+## [121]  0.65698660  0.72896904  0.79366786  0.85043662  0.89870810  0.93799998
+## [127]  0.96791967  0.98816823  0.99854335  0.99894134  0.98935825  0.96988981
+## [133]  0.94073056  0.90217183  0.85459891  0.79848711  0.73439710  0.66296923
+## [139]  0.58491719  0.50102086  0.41211849  0.31909836  0.22288991  0.12445442
+## [145]  0.02477543 -0.07515112 -0.17432678 -0.27176063 -0.36647913 -0.45753589
+## [151] -0.54402111</code></pre>
+</div>
+<div id="create-a-vector-cos_wave-by-calling-the-cos-function-on-each-element" class="section level4">
+<h4>Create a vector <code>cos_wave</code> by calling the <code>cos()</code> function on each element</h4>
+</div>
+<div id="in-x_range.-1" class="section level4">
+<h4>in <code>x_range</code>.</h4>
+<pre class="r"><code>cos_wave &lt;- cos(x_range)
+cos_wave</code></pre>
+<pre><code>##   [1]  0.28366219  0.18651237  0.08749898 -0.01238866 -0.11215253 -0.21079580
+##   [7] -0.30733287 -0.40079917 -0.49026082 -0.57482395 -0.65364362 -0.72593230
+##  [13] -0.79096771 -0.84810003 -0.89675842 -0.93645669 -0.96679819 -0.98747977
+##  [19] -0.99829478 -0.99913515 -0.98999250 -0.97095817 -0.94222234 -0.90407214
+##  [25] -0.85688875 -0.80114362 -0.73739372 -0.66627602 -0.58850112 -0.50484610
+##  [31] -0.41614684 -0.32328957 -0.22720209 -0.12884449 -0.02919952  0.07073720
+##  [37]  0.16996714  0.26749883  0.36235775  0.45359612  0.54030231  0.62160997
+##  [43]  0.69670671  0.76484219  0.82533561  0.87758256  0.92106099  0.95533649
+##  [49]  0.98006658  0.99500417  1.00000000  0.99500417  0.98006658  0.95533649
+##  [55]  0.92106099  0.87758256  0.82533561  0.76484219  0.69670671  0.62160997
+##  [61]  0.54030231  0.45359612  0.36235775  0.26749883  0.16996714  0.07073720
+##  [67] -0.02919952 -0.12884449 -0.22720209 -0.32328957 -0.41614684 -0.50484610
+##  [73] -0.58850112 -0.66627602 -0.73739372 -0.80114362 -0.85688875 -0.90407214
+##  [79] -0.94222234 -0.97095817 -0.98999250 -0.99913515 -0.99829478 -0.98747977
+##  [85] -0.96679819 -0.93645669 -0.89675842 -0.84810003 -0.79096771 -0.72593230
+##  [91] -0.65364362 -0.57482395 -0.49026082 -0.40079917 -0.30733287 -0.21079580
+##  [97] -0.11215253 -0.01238866  0.08749898  0.18651237  0.28366219  0.37797774
+## [103]  0.46851667  0.55437434  0.63469288  0.70866977  0.77556588  0.83471278
+## [109]  0.88551952  0.92747843  0.96017029  0.98326844  0.99654210  0.99985864
+## [115]  0.99318492  0.97658763  0.95023259  0.91438315  0.86939749  0.81572510
+## [121]  0.75390225  0.68454667  0.60835131  0.52607752  0.43854733  0.34663532
+## [127]  0.25125984  0.15337386  0.05395542 -0.04600213 -0.14550003 -0.24354415
+## [133] -0.33915486 -0.43137684 -0.51928865 -0.60201190 -0.67872005 -0.74864665
+## [139] -0.81109301 -0.86543521 -0.91113026 -0.94772160 -0.97484362 -0.99222533
+## [145] -0.99969304 -0.99717216 -0.98468786 -0.96236488 -0.93042627 -0.88919115
+## [151] -0.83907153</code></pre>
+</div>
+<div id="create-a-vector-wave-by-multiplying-sin_wave-and-cos_wave-together-then" class="section level4">
+<h4>Create a vector <code>wave</code> by multiplying <code>sin_wave</code> and <code>cos_wave</code> together, then</h4>
+</div>
+<div id="adding-sin_wave-to-the-product" class="section level4">
+<h4>adding <code>sin_wave</code> to the product</h4>
+<pre class="r"><code>wave &lt;- (sin_wave * cos_wave) + sin_wave
+wave</code></pre>
+<pre><code>##   [1]  1.230935e+00  1.165692e+00  1.083328e+00  9.875355e-01  8.822460e-01
+##   [6]  7.714709e-01  6.591435e-01  5.489674e-01  4.442763e-01  3.479118e-01
+##  [11]  2.621234e-01  1.884945e-01  1.278981e-01  8.048209e-02  4.568651e-02
+##  [16]  2.228993e-02  8.484426e-03  1.975012e-03  9.954100e-05 -3.596102e-05
+##  [21] -1.412259e-03 -6.948240e-03 -1.935483e-02 -4.099764e-02 -7.377404e-02
+##  [26] -1.190100e-01 -1.773809e-01 -2.488597e-01 -3.326954e-01 -4.274215e-01
+##  [31] -5.308962e-01 -6.403711e-01 -7.525874e-01 -8.638943e-01 -9.703865e-01
+##  [36] -1.068055e+00 -1.152944e+00 -1.221309e+00 -1.269771e+00 -1.295456e+00
+##  [41] -1.296120e+00 -1.270251e+00 -1.217143e+00 -1.136943e+00 -1.030662e+00
+##  [46] -9.001610e-01 -7.480964e-01 -5.778414e-01 -3.933785e-01 -1.991681e-01
+##  [51]  0.000000e+00  1.991681e-01  3.933785e-01  5.778414e-01  7.480964e-01
+##  [56]  9.001610e-01  1.030662e+00  1.136943e+00  1.217143e+00  1.270251e+00
+##  [61]  1.296120e+00  1.295456e+00  1.269771e+00  1.221309e+00  1.152944e+00
+##  [66]  1.068055e+00  9.703865e-01  8.638943e-01  7.525874e-01  6.403711e-01
+##  [71]  5.308962e-01  4.274215e-01  3.326954e-01  2.488597e-01  1.773809e-01
+##  [76]  1.190100e-01  7.377404e-02  4.099764e-02  1.935483e-02  6.948240e-03
+##  [81]  1.412259e-03  3.596102e-05 -9.954100e-05 -1.975012e-03 -8.484426e-03
+##  [86] -2.228993e-02 -4.568651e-02 -8.048209e-02 -1.278981e-01 -1.884945e-01
+##  [91] -2.621234e-01 -3.479118e-01 -4.442763e-01 -5.489674e-01 -6.591435e-01
+##  [96] -7.714709e-01 -8.822460e-01 -9.875355e-01 -1.083328e+00 -1.165692e+00
+## [101] -1.230935e+00 -1.275752e+00 -1.297368e+00 -1.293655e+00 -1.263233e+00
+## [106] -1.205535e+00 -1.120856e+00 -1.010350e+00 -8.760165e-01 -7.206392e-01
+## [111] -5.477020e-01 -3.612771e-01 -1.658915e-01  3.362542e-02  2.323041e-01
+## [116]  4.252035e-01  6.075781e-01  7.750379e-01  9.236943e-01  1.050288e+00
+## [121]  1.152290e+00  1.227982e+00  1.276497e+00  1.297832e+00  1.292834e+00
+## [126]  1.263144e+00  1.211119e+00  1.139727e+00  1.052420e+00  9.529879e-01
+## [131]  8.454066e-01  7.336788e-01  6.216772e-01  5.129958e-01  4.108154e-01
+## [136]  3.177884e-01  2.359471e-01  1.666395e-01  1.104949e-01  6.741977e-02
+## [141]  3.662486e-02  1.668195e-02  5.607103e-03  9.675926e-04  7.605014e-06
+## [146] -2.125156e-04 -2.669317e-03 -1.022774e-02 -2.549732e-02 -5.069903e-02
+## [151] -8.754849e-02</code></pre>
+</div>
+<div id="use-the-plot-function-to-plot-your-wave" class="section level4">
+<h4>Use the <code>plot()</code> function to plot your <code>wave</code>!</h4>
+<pre class="r"><code>plot(wave)</code></pre>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAAA1VBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZmYAZrY6AAA6OgA6Ojo6OmY6ZmY6ZpA6ZrY6kJA6kNtmAABmOgBmOjpmOmZmZjpmZmZmZpBmkJBmkLZmkNtmtrZmtttmtv+QOgCQZgCQZjqQkGaQkJCQkLaQtraQttuQtv+Q2/+2ZgC2Zjq2kDq2kGa2kJC2kLa2tpC2tra2ttu225C229u22/+2///bkDrbkGbbtmbbtpDbtrbb25Db27bb29vb2//b/7bb////tmb/25D/27b/29v//7b//9v///8uasOgAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAgAElEQVR4nO3dDXscVZqY4RZjgmCWWWwSZZwAyybDjifOImLwArEJsrH6//+k9Je6qz8kdZ36et+q+76unQUhtdrnVD1ddaq6PZsDUGQ29BMAyEpAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQKHYAZ0BtKb9RLX+iC0aerSBcWm9UW0/YJs6eMEAJktAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACnejqA98iEVDy6PiTGGnVJGZLQEmj88+ypUWb+Rn5bAkoWVT3yMq/E1Jlklb/NNLZElCSONwjzWZo1Re53f+MjoCSRLWaChra7qT9LqO7/x0ZASWDg13y7qRwvGtrmVWWPQW0/iO2/YBtGuUcTsDhLrkuqYKGtD1tr6xW7/53ZASU+LaHnne75HrvHPXVibQq0Zwd/PMIX+0ElPD2rkTszt5HfWST1/5a9d0MjfV8QUAJb/88cK+jlf9ODNtJme2fzY/zfEFACe8onZu98W42zWoku1mZ3c1W5XrS2CZLQAnv4Jhm11ABDWg7G/tX/kY6WwJKeJVjmn0H/50IdrMxhdkSUMI7cUyzdznCrEZSnY1Tl9/HNVsCevK7xni9MK/DXfK+rxHBqVaOd7YE9NQ3KWgop3fJkR7SpLa/45w+bR/XdAnoie85mn+GdWpKql/zahfDfYvUAlrnEdt+wDad8cd1aBPKfbvkA3srA7n/NW28O5WAPvQtI5vshB6K5H3niwzjoUqO9nxBQB/6lvHMc1KP5nG8hzb5PLjnjPV8QUAf+pbRTHNSj+fRbMXx8FyM9HxBQB/6lrHMclaPz4XZiuOc2Rrd+YKAPvQtY5nlrAQ0k0nOloA+9C0jmeS0JrlLpjXJ2RLQ428Z3WlGWpPcJdOa5GwJ6InvGdtCd1qT3CXTmuQlPwE99U0ju9UirUlelsjrjJvOTv9zYgJ68rv0M4Qz8uh8IZDHDj0E9JxHbPsB21Trj6ujgzsjj84XAnlkKkZ4viCgD3yvPXNwZ0yCWcpjfOcLAnr/t45trlOSx1EZ3VGJgN77naM72xi3ke2YyZw9+mObJgE94zvHM93jNbpDm1SmO/oCesZ3Tm+zSMeCy5AmPPoCesZ3Tm6riKDWIY0FlyEVjP5oDlgF9IzvHME8p1PvpNBsDan+6I/nlF9Az/jO/NOcTs2TQrM1pNqjP6JTfgE94zvTz3I6dU8KzdaQ6o7+mBZcBPTe7xzPJOdTf5es9/20acqzJaD3f+toTjPymfIumc+UZ0tAH/jesSx05zPlXTKfKc+WgD70zfo5kCmvquUz5RVrASWgKV/XTWjC90wIKAFN+c7CjKZ7166AEtCU39uS0mTfNyagROSUfMxGNLsCesbPOLTpn1PyMRvP7Aro4z8ylrnOxaiP2WhmV0Af/YnRnG0ALRPQx35gPOvdkzCaQxtSSBjQ27e/Xl9f//D294KfLQhogx+mdxZc6FW2gL75dreLzD5/VffHBXTcLLjQr1wBff9stu/J3+s9gICOmgUXepYqoDeXy2h+drX26fJfLr6u9QgCOmpmq3fNVkzyr7dkCuiHp4tgflf5wi+LoH70U52HENBRM1t9a7bmPIIV60wBfX2Uy2VSv6jzEAI6amarZ83WnMewYp0ooLffzGaHJ+w3s9nHda7Gu41p1AS0X832jlHsW4kCujjcPDpfP/W1h7iRPr4GZ3UC2q9m4z2K2RLQx38k/TpNKk3GexS7ZCICmimgi1P4i8O7ljo/hZ+P4UphJo2O+EdxUpiIgGYK6PzFUS2Xy6Kf1HmItPM0FQ0TaMGlVwKaKqDvLhcF/bHyhfeLfh4dlD4o7TxNRdOdyoJLnwQ0VUCX9zEtinn1t+ul79d30te6iynvPE1F451KP3skoLkCOv/58uCtnBdf1XuAtPM0FaPYqSbDbUzJAjq/fVlN6MXzup/IlHeiJkJAU3EjfbKALty+uX55dXX1/PpVwefZ5Z2oiRDQXLyVM11AG0k8U9MgoMk0K2D6fgro+T+ZfapTGMW6GNMhoOf+oIL2YgzrYkyHgJ75c3brnnipIpHkAX34vfCzE4p+jRPLHrXRTw2mHwJ6Dpc2cnEUS09GHdBjAjoFFlzoS/KAzv94+1udbxfQCbDgQm+yB7QmAZ0As5VN4gUXAa37YymneVLMVjKZl6wFtO6PZZzlaTFbuaReshbQ837MqloeAppK7p1LQM/8ucQvklMjoKnkni4BPfcH8y7TTE3uPXJyck+XgJ79k/qZRO5zwixa2yEE9OAR237ANuWbIOqz4NK99k7JBPTgEdt+wDsfnp56a2Yv70QiFwsuXWvxNUpADx6x7Qe8I6CcSz+71eYqiYAePGLbD7j1/pmAQgBtRi/3knWmgM5vv6n71xgfSjhD0+GwMY1WjxpTL1mnCuiqoF83eYCEMzQZFi7zaPe0O/PM5wpo7Y+vO5RxiiYi9XHI1LS8bpm3n9kCOr9pdhKfco4mIfdK2NTkvvDTpmwBXZzENzkEbWO9JutrZWx2yUzM1p1sAZ2/u7r6t/KfbuGKoYJ2wi6ZifOFO+kC2kzDP651us4IaCr2hA0BrfXTXne7IqC5OBdbE9DCn576htO2TsbWPt4dY7sioIU/Pfktp2VdjK2jJLomoIU/badsVwfLI9bp6JyAFv60fbJlrefOijXdE9DCn7ZPtq3tE26zlUzK9RYBLfzpZPOcQcs7kNnKJeeKtYDW+mknhXkIaCpJV6wFtN6Pp5zkaRLQTLIenAhozZ/PeJoxTQKaSdbZEtC6D6CfSWTdJacp62wJKCOV9aRwmgR0+4htP2CbMk0NDVmxTkRAt4/Y9gO2KdPU0JQV6zwEdPuIbT9gmzJNDY3pZxoCun3Eth+wTZmmBqYj64q1gALDS7piLaBAADlXrAUUiCBjPwUUoJSAAhQS0MLHSXi2AW2w8VcIaNnD2IiYKBt/lYAWPUrKOy6gORv/HgEteZCc9/xCYzb+fQLa7EFsRAk45WyPjX+fgDZ7ENtQG7otnEW7Ftn49wloswexDbWg28JZtGuTjX+fgDZ7ENtQc90WzqJdq2z8+wS02YPYhhrruHBmq1WGc5+ANnsQ21BjHQ+n2WpV98OZa8FaQEsexElhiwQ0k843/mSX/AS06FFclmiPgKbS8cafbd8S0LKHSfUqGZuA5tLpxp/u7E5ACx9HP9sioMl0e8/Z6X8OS0AZWOcBTXZMM2kCKqDU03Xhsq2qTZqACig1dV04K9Z5CKiAUlfXhdPPNARUQKlN4VgTUAEFCqW75CegQBjZLvkJKBBHskt+AgoEkqqfAgpQSkABCglos4fLdLYBtExAGz2agsKUCWiTB8t1xwXQMgFt8FjJ7vkFWiagrTyWgiZgvYXWCWgrj2WvjM+KNe0T0FYey04ZnhVrOiCgrTyWfTI6K9Z0QUBbeSz7ZHRmK5kk6y0C2spjhZ/nyTNbuWRZsRbQBo/lpDAPAU0lzYq1gDZ5sCSTjIC2ob9jwjwHJwLa6NFynGYgoC3ocXPPM1sC2uzh9DOJPLtkVH2ecOWZLQFlEvKcFAbV6wAKaFCxJ4MOWbFuptemCWhQsSeDLlmxbkRATxJQBtRr0vSzCQE9SUAZjoPCPHoOaJYVawFlMJYlE+n3oDDNppE1oLe/Xv/wW/0fCz4b05LnMIPez6qznJxkCugfb++S+cuz1dBe/OX3mg8RfTomJc9CF/2/3OXoZ6aAfng6++in5T/c/mP76nTxdb3HCD8fUyKgqaQ5q+5VxoC+WJbzn66uvlwmtF5BTX0gAppLlrPqXiUM6M1iBtfn7u+/mW2aeq5u5t52VURAk7GdH0sY0MUB6CebL90uCvpFncfoZPK9MpcRUNLLF9BlNLfn7Yuj0Y/rXEjqYj+1NlRIQEkvX0C3S6GVr52tg/3UzTilBho5pwu0R0CbchxVbJBjdwsutChfQOcvZhd/v/vau0sBTWyAmFlwoU3JAros503lwlGANVABbWC4fpos2pAroAt/+uurf9kegi6/NPRVeAHNxGwlE329JV1A11bn7bf/cRngPlC7ZCZmK5fwK9aJAroo5puXX17uAros6m459CwCOnFmK5X4K9apArqyquhdQJ/8WO+H3cY0cQKaSYJ9K19Ad27/vWY+3Ug/eQKaSYLZyhzQAt7KOXEJdkm2EsyWgLbyqPqZRIKTQrYENJqgs0BvLLgkIqDRBJ0F+mPBJQ8B7drD74WfndDjkyMkW0IaAto1AYXRSrBiPeqAHos6DcCx+CvWyQNa+Zs6zxJ1GoATwp86Zg9oTWHnATgheD8FFKCUgLb54LFfLIGWJQzo7dtfr6+vf3hb54OU73RZt/DLNUDLsgX0zbeVW5I+f1X3xzuMW/wLhkDLcgX0/bODuzqf1Ps40A4DmuCWNaBlqQJ6s/o05c+u1j5d/svF14//WEWXAe3jt9Aa6y3nM1b3yhTQ1SfQf1f5wi8R/kqPE49sS4vPivX5jNX9MgX09VEuI/ylcice2YYWnhXr8xmrByQK6O03s9nhCfvN8H+t8YlHtp1FZ8X6fCHGKuwhcKKAnnrfe5z3wgtoJmbrfBHGKu4igoC2JMJmxrnM1vkCjFXgRYREAV2cwh/9JcaRTuEDnOhwpgBRSGP4sYq8byUK6PzFUS2Xy6Kf1HkIN9IHMfAZ2fBRyGP4sRr+GdwvU0DfXS4KWv2bjN8v+nl0UPogb+WMYeixirxLRjP8WA3/DO6XKaDL+5gWxbz62/XS9+s76WvdxeTDRGIY/Gg98i4ZzfBjNfwzuF+qgM5/vjx4K+fFV/UeINrwT9Pwa1rDP4M8hh8rAW3N7ctqQi+e1/1EpmjDP00BdojBj4ETGXysAmwv90oW0IXbN9cvr66unl+/Kvg8u2jDP00RdoihV2EzGXqsImwv98kX0EaiDf80hdgh9PN8g98zMfQiwv0ElN6FCCh5DL6IcD8BpXcCSj1DLyLcT0DpnYBSU9R+CmgHvyLoVMcReU0L6hDQ1n+Dgj4q8JoW1CGgbf8CaTiDlxnGQUBbfnwnp2eJ0s8oz4OkBLSzx7dXxudImGYEtLPHt1OGZ8GFhgS0s8e3T0ZnwYWmBLSzx7dPRme2kgm43iKgnT1+qHnmBLOVS8QVawHt7PEjTTOnmK1UQq5YC2jLj29VLQ8BzSTmviWgbf+CgK+SnCagmcScLQFt/TfEW6fhtJi7JKfFnC0Bbf9X6GcSMU8KOU1AA4gz8ARgwSURAQ0gzsATgQWXPAQ0gDgDTwj6mYaABhBn4IE6Yq5YCyiQQcgVawHt7Dc5N4Q2RVyxFtCuflG8uYbcAu5TAtrR7wl4tsG9Au6ZpCCg3fyaiOvd3Mf5AoUEtOtfY6cMz/kCpQS0619jn4zO+UIykU4XBLTrXxNjnrmf2bpXpFRthVpwEdCuf02IaeYBZus+oVJ1J9aCi4B2/WsizDIPMVv3iJWqjWALLgLa9a+JMMs8xGydFixVG8FmS0C7+TURNz1OC7ZLhhFzXII9KwHt6PcEPPnhtGC7ZBgxxyXYsxLQrn5RwOV3TnK+cFqwVG0Ee1YC2tlv0s9TIo6L84WTgqVqI9izElD6FPPIPOazGlqwVG0Ee1YCSo+iHuvp5wnBUrURbMFFQLv+hfbMnWAbPw8KOluxXoQFtOPfp6AVMY9puEesVG2F2qkEtNtfF3ILHEz0gAbaMUMIlaqdSE9KQDv9bSHPgYYTPKBBezEg4/EYAe3pt9kI59EHxPlCLiHqLqA9/Tb75Dz4gDhfyCXG+YKA9vTb7JPz4AMS+slxKMj5goD29NvskvPgB3lmK5Mom5KA9vTb7JJLQQ4bTjJbmUSZLQHt6bfZJVdiLFydZLYyiTJbAtrpb4txmhFJ2H6G2SU5R5TZ6i+gf1xf//D7/Pa3tn9fLW6k5z5RdknOEWW2+groz58uGvLRT/MPT5/82PZvrMFbObmP84VMJhbQf6wisgro7OLvbf/K8w32YSIyGp/zhUSmFdDXi03yyf+4XAT09pvZ7OPf2/6dZxtoqBU0BdOUR5TzhV4C+u5yNvtqcfC5COiqoF+3/TvPNsxYO7RJwvlCHkF2ql4C+mI2+2S+Cej8ZvUvAxlkrKO8WHIeBU1hFuLlro+ALg46l+uem4AuDkeHO4cfKKADPwHqCHJow2NCFLSPgH54urx8dBfQzb8NQ0B5hPOFVIZ+uRPQfn+pfTI6s5XJ4C93TuH7/aV2yejMViaDz1ZfF5G+2Ab09QQvIg38BKjBbGUy+Gz1EtCbzT30y4Au/nlqtzENPsnUYLYyGXy2egno8t7Pi++WAb39X7Pp3Ui/W6dxe0x8g++S1DD4bPXzTqQPTyt3G0zqrZyb3zq7+/8KGl31qoTJim4iAV0dg25M6sNEtr92b2e0UwZWvS9GQaObSkDn8/ffLj+P6eLzV41/we3bX6+vr394W7IQMNz7FfZ2RftkYJtp2s6XggY2+PJYf58H2o4331YWA+rXOMrnttgnAzs89DRZgQ29PNbLfaD/3tZVo/fPDt699aTmeqqA8rjDXdFsBTbw8lhP70R68l0bDb25XI7TZ1drn66uSNW7JUpAOY/ZymLY5bGeArrw58arn8vHufiu8oVfLmc13xYaIqCuTSQgoJkMN1u9rIH+sj7zvvi82QX410e5XCb1i1pPLkBAXd3NwN1MmYw8oPP57ctP1w19Xn4qf+qjmG9q3pYfIKCrXXH9f/bJuI7OF8xWYMO93PV3Ff6Pl5fr6z6ly6GnPsap7kc7DRvQ2bzST2eGoVU/JW03cZOR7EVjuJe7Xm9jev/tuqGfFyU0e0CPjz3TbJ8TNNvdBDrB2cp22D3cy13f94Gu7uMs+zzQzafi7cl0Cu8Gw1TuThjmE5yuWTVIGRwuj/U3WT0H9PaXL4sDuvxUvINaLpdFa3023sDbw+Eda4le46dn/+VuSrNV+WMm+QPPdtXs+eWu14Cu6ll+JWn5l3t+XL2Q//6buh9NMvz24OJEGqf6OYnZSngL18H5Qn+T1V9A796E2eDd8K9X+b362/XS9+s76WvdxRRgc5j4xYlsJnnrRMKA7r/C9fhy11NA7y4fPfnu1H8928+Xs30XX9V8coNvDkerNRM6sklodylpG9Dxz1bGgFZnpvpy1/Vs9RHQ280NTE1uAj14qFnhAw6/ORyu1sweNPCTbVPOP1L1isT6BHECs5UyoEsHL3d9zFYfAV29lbPp25C2bt9cv7y6unp+/aogxwE2h+r07s7kR79jJv3TbGdrO2WPzlauP+Ap6QO6/t9eZqungP652al7ayJsDtW52/zPfPevh/9vJDvm9uln+3PczdB8N2WnZ+twuoZ+4g0kDmjl5e7c2Wr6K1t43vuPePSV2x+G+0uQDoTYHCoztz/Xm5fM/f+X9dhtT+XJZ/tjVIb/odk6ftUb+omXyztb+y9380dnq/nCUk8XkaIIsz1sryXN15P40P+bVZd2ckp7TDOv7mOPTFP1tDH1bOU9Xzj5cnfy/1WOThsVdJCAFv1tHK0Isz2cE9D59t/aebEcUOaAzuu93M2rZ/wJ/6wreY+jz325m1c72uCFoqeA3n5/deezT0vfiXTCw++Fn53Q1m9uaNvHzQvh/P6Azvf3yDB/hDrSB/Tx2dqbtNyzNc/d/15f7voJ6M3+/ZsCWinj7LyAVr9tuGddKnlAz5mtg9OGzLOVXK8vd70E9N3B/e9ln8Z0SqpPY9pXnbTHA7r7tkh/hrNlD+gZs3V63SXnnza5Pl/uegno8i2Yn3//dHbx318+q/3XGD3sj7e/1fn2SJtz5UXv9IvlfF4N6DzzUmj6gD4+WyfXXeZZ/7i5Hb7cPTZbDV7u+gjo8jOTvlh9mNLXq5jW+gC6doXbmitHmAf3Lz2yWhPuT/KgytPN9cT33T9b27mpftt8N12DPu3p2Xu5O3+2CrbOPgK6OM9efmbS61VGT/3FHP2JtyXvBXH7ormb9f0X0L2TkoGfeS3bp5vseR+4d7YOd9l55pe7sag7WyUvdz0FdLlQebP+7M6bmh/h2aqAG/LsQbsX0G0/cy6ujSQlj89W5VUv7cvdWDw6W9uuFr/c9RjQd5erk/fFvzU7h799++v19fUPRTeTxt2OH57qg4PPzU8M+4xrGkU/7zy+Z85Sv9yNy1kdLXy562kNdBnQTTnrXjjfd/epoiv1P1o013Z8sqNZAzp+ZiuTEwcnJS93fQR0/mK1BrrraHFA3z872Eif1Po8+qSbceXYbTfHSf8s42e2Emn+ctdLQF+vlz3Xl+Fvyi/Dr+/H/2zzlqbVB9LXvCcq72a83SVn22uHd/sp4RzOVuYtb9Qav9z1EtDlB4IuorlI50ev/u/T4otIy4e5qH4u3i+Xdd/VlHgzrr5YjuaazGgdzY+JiqvJy10vAV2l86fVHUyro8aa5913Xh/lcpnUWn8pUubN+KCfLu+Gtt9Pr3ahNXi56yeg81+erZY/V0uYdf8eozun7iCtux6QfRM+7Gf+P9GYVfZHBQ2t/OWup4De+eXq6nmt915WnLr6lPi98GUsriUy277IVV74CKrs5a7ngDYhoEsW1xK5e7mbzZwvhFf2ctfLjfRfNv/rOOerU/ij1dOpncLPj88vRvBHGi8vd4kUvdz19E6k2cVfm/+lnC+OarlcFq11SX8k22/1jzGSP9JIeblLpOTlrq+ALi8e1X/j0L7lx4p+XO3w+2/qXtIfyfYroJmYrSwKXu76WQN9/6+bj1Ru9tcbv151+Opv10vfr++kr3UX01i2X7tkJmYrk5qz1dtFpNvvv1w39Mn/LF8Q/fngo+1r3xI1ku23epLh9pjoBDSTqAFdevPtOoAfF3+YyO3LakIval+cGsv2u3fFUEFjE9BMIgd04f23s4Z/qdztm+uXV1dXz69fFRzJjmb7PSinggbmfCGTyAH943+vT+Pb+1s56xrPtuv2mDycLyRS85aJ3gJ6F8/l1fhGV5IaGdem69wwCecLiWxn56xp6iWge/Ec7m+Um48tMwKahfOFRGqdKPR5H+g/DRvPpXFtuQKaidnKos5CS2/vRPq89DNEWjWuDdcumYnZGqNe34nkCLRddslMzNYY9fROpJebv8zoT/+14ds5GxrXhmuXzMRsjVF/tzG9+ddPNxH963ARHdeGW/OOCwaVI6ButKqn3xvpNxF1H2hL6t1xwaBSBNStqjX1/U6k1XsxBbQttvc8MpwveEWuq9eA/rp5L7yAtma2Z+hnw0Pi1ylD44PpLaDv75ZALwZcAh3pZqGgOYSfpxSrDLH0EtDb7TuRmnyWXRtGuVXEP7JhLfr5goDW1uN9oLMB3wN/Z4xbhfOuXAIXVEBr6+2dSC38nUgtGONWEX2rD5uLYUQ+X4i+KQXUS0D/88An7jtj3CqCb/WBD7iGEPp8IfimFFHftzENbIxbReytPvIB1xBCz1boJxeTgKYXeqsPfcA1BLM1LgKaXvBd8vQ/T1bsAXG+UJeAphd6lwz95IYQfECsWNckoOmFPu8K3ov+RR8Q/axHQPOLfN4VvRe9MyDjIqAjEPi8Sy8OhD5foDYBHYOw/RTQI5HPF6hNQOmSA64jgc8XqE1ARyTijumA60jEaaKQgI5HzEObmM8KWiGgoxH1WE8/GS8BHQurjcl4YRkDAR0L17tzsbQxCgI6FgKaStQFF+oR0LEQ0EwsuIyEgI6FgGZitkZCQMfCLpmJ2RoJAR0Lu2QmZmskBHQsrKplIqAjIaCj4bpuIgI6EgI6Hu4szENAR0JAR0Q/07DgMhICCgOw4DIOAgpDsOAyCgIKg9DPMRBQgEICOj4ObaAnAjo6FtegLwI6Ni7vQm8EdGTcYAj9EdCR8RaXZKy3pCagIyOguVixzk1AR0ZAU7FinZyAjoyAZhJpxdqRcAkBHRkBzSTQbFlLKCKgIxNol+RRcWbLWkIZAR2ZSCeFPCZMQG02hQR0bBxKJBIooKf/mUcI6OhYzMojTLfCPJFsBHR89DONMN0K80SyEVA6o+SPCbP0KKCFBJSuWEt4XJQVawEtJKB0JEobYgvyKiOghbIG9PbX6x9+q/9jto3ehDk7DS5EP81WqUwB/ePtXTJ/ebba5i7+8nvNh7Bx9MYxTSrOF8okCuiHp7OPflr+w+0/tqc9F1/XewwbR28ENJcgawnZZAzoi2U5/+nq6svlbNcrqK2jNwKajH6WSBjQm8Ukr8/d338z2zT1XEMAtukAABPHSURBVFPaPAbeIQSUCUgY0MUB6CebL90uCvpFnceY0J489CmZgDIB+QK6jOb2vH1xNPpxnQtJ09mTB78oIKBMQL6AbpdCK18722T25OFvSxn+GUDnBHScAhz/DX4MnIpLODnlC+j8xezi73dfe3cpoCcFCOjgq7CZGKukkgV0Wc6byoUja6D3iBBQR1Vnc7SeVa6ALvzpr6/+ZXsIuvySq/CnhAgoZ7JenFa6gK6tzttv/+PSfaD3ENBMzFZaiQK6KOabl19e7gK6LOpuOfQsk9k67ZKZmK20UgV0ZVXRu4A++bHeD09m63RSmImAppUvoDu3/14zn1PaOl2WSERA08oc0AIT2jrdGJOHgKYloKOln2kIaFoCCkOzYp2WgMLgrFhnlTyg3gvPKFixTkpAIQD9zElAAQolD2jlb+o8i4AC7cke0JoEFGiPgAIUGnVAZycM/Zx6N9k/OHQvYUBv3/56fX39w9vHP0hZQN0fA13KFtA331Zi+Pmruj8+uYy4Qxs6lCug758dHE8+qfdxoJMLqPcIQpdSBfRm9WnKn12tfbr8l4uvH/+xiqlVxKdUJDPEeos1ngYyBXT1CfTfVb7wi7/S4xECmssQK9ZWyZvIFNDXR7n0l8o9QkBTGWLF2ip5I4kCevvNbHZ4wn7jrzV+kIBmMsSKtVXyZhIF9NT73r0X/mECmskQs2ULaUZAR83ukYmA5pMooItT+KO/xNgp/MMGOkFzVaKIgOaTKKDzF0e1XC6LflLnISa3iQxyicB13TICmk+mgL67XBS0+jcZv1/08+ig9EHT20QGiJnruoUENJ9MAV3ex7Qo5tXfrpe+X99JX+supiluIsP1c5LD3YSA5pMqoPOfLw/eynnxVb0HsIl0zy5Zym1M+eQK6Pz2ZTWhF8/rXEBaso10T0CLuZE+nWQBXbh9c/3y6urq+fWruvWc26H7IKDlvJUzm3wBbcRG0j0BbcCHiSQjoLRMQJmOrAH98OVnf671OUxrdujuCSjTkTagNd/DuWGH7p7rukyHgNI213WZDAGlda7rMhUCSvv0k4kQ0InQNGifgE6Ds2rogIBOgus60AUBnQJ3FkEnsga00ETz4d72ZKy3ZCGgUyCguVixTkNAp0BAU7FinYeAToGAZmLFOhEBnQIBzcRsJSKgU2CXzMRsJSKgU+CkMBMBTURAJ8FliUQENBEBnQY3xuQhoIkI6EToZxoCmoiAQixWrBMRUAjGinUeAgrRWLFOQ0AhnH76qdLNCShMk+PcFggoTJKV1jYIKEyRa/2tEFCYInebtkJAYYoEtBUCSotclUhDQFshoJPSceBc181DQFshoFPSceBc101EQFshoBPSceBc181EQFshoNPRdeDskpl4uWuFgE5H14ET0JZ1u6BswaUNAjodAppL15fkXPJrgYBOh4Cm0v0Ron42J6DTIaCZWKNMQUCnQ0AzMZopCOh0dB9Qx0ztEdAUBHQ6Og+c67otEtAUBHRCOg+c67rtEdAUBHRKOg+cfrZGQFMQ0EkRuDQENAUBhYhckktBQCEkl+QyEFCIySW5BAQUgtLP+AQUoJCAAhQSUIBCAgpQSEABCgkoQCEBnSL3x0ArBHSC3KEN7RDQ6fEeQWiJgE6OT6mYPCcgrRHQyfE5acm0njtLOO0R0MkR0Fxaz50lnBYJ6OQIaCqt584STpsEdHIENJP2c2f+2ySgk9PJDmRRrSPtz5aAtklAJ6eLHchlia4IaGwJA3r79tfr6+sf3v5e8LM2mE7WwFyW6IyAxpYtoG++3R3szD5/VffHbTBzlyVSEdDYcgX0/bPZvid/r/cANpiltk+47ZLdEdDYUgX05nK50392tfbp8l8uvq71CDaYldZvLDz9zzTXRUCdL7QnU0A/PF0E87vKF35ZBPWjn+o8hC2mCwLaHSvWsWUK6OujXC6T+kWdh7DFdEFAO9RB7twz0Z5EAb39ZjY7PGG/mc0+rnM13ibTBQHtUge508/WJAro4nDz6Hz91NceYpvpgoB2Su4CE1Aac1mCqUoU0MUp/MXhXUtO4UNwWYKJShTQ+YujWi6XRT+p8xD27264LME0ZQrou8tFQX+sfOH9op9HB6UPsoN3RD+ZpEwBXd7HtCjm1d+ul75f30lf6y4mAQValCqg858vD97KefFVvQcQ0CqHjdBMroDOb19WE3rxvO4nMolFhYVLaChZQBdu31y/vLq6en79quDz7LRix6VzaCpfQBuRii03b0JjAjpV3j6UjPWWiAR0qgQ0FyvWIQnoVAloKlasY0oeUO+FLyagmVixDkpAp0pAMzFbQQnoVNklM2lptiyjti15QOd/vP2tzrfbdLacFGbSTkBdiGpd9oDWZMvZcVkikVYCasbbJ6DT5XgkjzYC6pyjA6MO6OyEoZ9TJG2MiXHtRTsBbf4YHBBQmjCw/Wjj6FFAOzDqgB6z3bTLqlpfWhhpAe2AgFLOqlp/mh/rC2gHBJRydskeNV4rMVsdEFDK2SUzMVsdSBTQD09PXRTyTqQB2SUzseDSAQGlnICm4pJf+xIFdP7+mYDGIqC5uOmsdZkCOr/9pu5fY3zIlnNC+U4loMnoZ9tSBXRV0K+bPIBN51iDwxKrakxcroDW/vi6Q3bzI40WxqyqMW3JAjq/aXYSbzc/1PAg0qpa34x3KNkCujiJb3IIars71HQZ0/7cL69YsWQL6Pzd1dW/lf+0ze6Q60CpWDMJJl1Am7HVHRLQTFy1i0ZAJ05AMzFb0QjoxNklMzFb0QjoxNklMzFb0WQN6IcvP/tzwdV4G90hq2qZCGg0aQNadke9je6I67qJlAfUzU/dENDJc2dhHsUBNckdEVDsWmmULrg4zeiKgFJGdodQVkIL3Z0RUIo4JxxG0bi79tQZAaWEc8KhlLxuCWhnBJQCzglTEdDOCCgbdQ5t7JGpmK7OZA1oIVvPvWotrtkjUzFdnRFQVuotatojUzFdnRFQlmouatojh1brWpIl684IKEs1iyigA6t5N5ObJroioCwJaCq1g+i23Y4IKEu1A+qccEAFw6+f3RBQluoeUjonHJITgDAElKXau6RzwgEJaBgCylL9XVI/hyOgYQgoSxY1MxHQMASUFYuaidQJqDOFTgkoaxY186gRUNPaLQFlw46WxvkLLk4sOiag1KW0gzu3i5a2uyag7Hm8jk4KAzhzElxt6pqAUvX4jumkMITzXsQEtGsCSsXjdXRSGMojHRXQrgkoO2fU0S4ZyWMnDGarawLKzhn7m10ykEdPGMxW1wSUHQFN5fETBrPVNQFlR0BTeXwurFh3TUDZEdBUzpou90x0SkDZEdBUzpkLd+12S0DZqXNIYzAH9/B0zfb1+cQmREDZ2e1nJ3e7/S/aKYf2YEClsxcCSsXd7nZy75sdGuY5cuehgHqd64eAUnVQx+reV90l9TOCB2bESktPBJQ9B/tidT+0S0azmZMT5wSu9fVEQDlycu+zSwa0n857XuPMVocElCMCmsbhdb3jr5mtTgkoR/bO209dNTKMgdw7W6de+miZgHLk6GYmu2RgJ2Zr9cWD41I6IaAcqd4Bs94Tt/+w/w0EsD9bs+1szc1WDwSUI9V7mCr1tEuGdDhbu8PPuyXRQZ/eyAkoR2a7PW9TzvnuzHBuFGPZBnR+F9C7gt59achnN3YCyrFTu6FdMqjTAT39ZjLaJqCccHA9wi4Z2Mnzhbk3jPVDQDmlsvfZJYM7eb4wn9va+yCg3Gf/3LD6JUI5eb4wN1t9EFDuI6BZ7J0vuNbXJwHlPtvFtZl+xjfbzlFl3uiagHKv3Z5ol4xvr6DWqnsioNxvdmjoJ8QDTNYABJQH2CUzMU39E1CAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSg0OQCCtCe1hvV9gO2aejBBsal9Ua1/YD9cpLfAYPaBaPageEHdfAn0MzwAzhCBrULRrUDww/q4E+gmeEHcIQMaheMageGH9TBn0Azww/gCBnULhjVDgw/qIM/gWaGH8ARMqhdMKodGH5QB38CzQw/gCNkULtgVDsw/KAO/gSaGX4AR8igdsGodmD4QR38CTQz/ACOkEHtglHtwPCDOvgTaGb4ARwhg9oFo9qB4Qd18CfQzPADOEIGtQtGtQPDD+rgT6CZ4QdwhAxqF4xqB4Yf1MGfQDPDD+AIGdQuGNUODD+ogz+BZoYfwBEyqF0wqh0YflAHfwLNDD+AI2RQu2BUOzD8oA7+BJoZfgBHyKB2wah2YPhBHfwJNDP8AI6QQe2CUe3A8IM6+BNoZvgBHCGD2gWj2oHhB3XwJ9DM8AM4Qga1C0a1A8MP6uBPoJnhB3CEDGoXjGoHhh/UwZ8AQFYCClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKZQ7o+28vZ7OLz38c+nnkd/vNbOvrzdeMbiMfnn700+7fjgfT8BaoDmqQbTZxQH++XI/exX8b+pmk9+Hp0cZodBtZ7N6VgB4PpuEtsDeoQbbZvAG9OX4BolBlLDeDaXQbuX0xq+zrx4NpeAvcO6hDbrNpA7p8AXqyOFZ/86w6qhR5fbjJGd1GVqeX23E7HkzDW2B/UKNss2kDuhi/j39f/sNyXL8Y+tkk9+JwizO6TfyyOpXcDunxYBre+g4GNco2mzWgi0G6+Pv6H99dbgaOQovB3B9Bo9vA+8UR0OzzZ9v9+3gwDW9th4MaZpvNGtDF8frdGFVGjiKLwfzk8AtGt9TiSOjiq8r1juPBNLy1HQ5qmG02a0BvZrvxe2ElvpnFYH79/svFS/yfv9t+weiWen3xl9+rF4yPB9Pw1nY4qGG22cQB3S5zHC0nU8/r2cV/2Vy+/Hz1Im50G/hjOYT7AT0YTMNb2+Gghtlmswa0OkQ3FuKbeVG5I2R1GmR0m6rs68eDaXjLVAMaZZsVUJZXLS+e/758I8dsPZRGtykB7UBlUMNsswLKh6fbNffX6xtFjG5TAtqB/StzMbZZAaVi+cL+tdFtTkA7sP/+2MpXB9xmBZSq1/bwVghoB04HdNhtNmtAXcjsxnpcjW5TrsJ34J6ADrrNJg6oW+k6sN0YjW4j7gPtwGMBdR/o+byZoxvr126j25R3InXg/lP44bbZrAH1duL2vN6d/GwubhrdpvbvuPFe+FbsLyzH2GazBtQH2rRnsb1ttsvlJy6uzoOMbkP7b5rxaUytqAxqmG02bUBXn/73ykcqtmB1U/JXv6/Hcv0qbnQbOvjci4PBNLxFDm+kj7DNpg2oD/Vuz7vL3VhuXrqNbjN7y3XHg2l4S1QHNco2mzeg8//w18q05d2z2eFYGt1G9q93HA+m4S2wN6hBttnEAfUXG7bn9pflJ4P96flvuy8Z3SYOLhj7WznbsD+oMbbZzAEFGJSAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBJbgPT2cf/97C90D7BJTgBJS4BJTgBJS4BJTgBJS4BJTgBJS4BJTgBJS4BJTg7uJ4+83so59uX346m118/uPdf3z/7eJf//L7LqC3P382m83+/N3q325mix+Zr3929skQT56RE1CCqwb0/1zO1r5e/7fX63/7+P/dBfTd3Tc8+XFe6ea2pNAqASW4SkB3Lv6+/E+v7/71P22+Z9vPTTAX/778zsVD3CUX2iSgBLcX0Iuvfp/f/mPxD1+s/8vqSPPnZTaX37P6wnfL8/jLzaHni9V/WP8vtE5ACa4a0M15+Ot1Hl/PKifuy3+62YZy8UOrg9TVsefN3RErtExACa4a0C/WX1oEc/GlxRfuurhJ6YtdKG8237z4/3+63P4gtEtACa4S0Ls8rgO6+A93V4a2X9ieqS++sjqHX6+cOoGnGwJKcA8F9C6M639cnq9X7E7vncDTEQEluHsDuv7fyvdUrsHvAlpZOoW2CSjBnX8EWinqzupWJ0ugdENACa7WGujRsebycvylc3g6IqAEd29Alyfnu3ck7X9h68Xi8PO193HSEQEluHsDursPdHn1aPOFjzZvk3+9Pm9f3RnqjUh0RUAJ7v6Art549Go+/6X6TqTle5Xmf/xjfel9c0zqrfB0REAJ7v6ALsO49s9PD76wuXC0OUat3IMPbRJQgnsgoOt3wVc/jenmstrPd3eXj7yZk24IKME9FND5+28vDz4P9OXy80D/9Py35b+82F49euE6El0QUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBCAgpQSEABCgkoQCEBBSgkoACFBBSgkIACFBJQgEICClBIQAEKCShAIQEFKCSgAIUEFKCQgAIUElCAQgIKUEhAAQoJKEAhAQUoJKAAhQQUoJCAAhQSUIBC/x+zbAOKbktCOwAAAABJRU5ErkJggg==" width="672" /></p>
+</div>
+</div>
+<div id="exercise-2-indexing-and-filtering-vectors" class="section level3">
+<h3>Exercise 2: indexing and filtering vectors</h3>
+<div id="create-a-vector-first_ten-that-has-the-values-10-through-20-in-it-using" class="section level4">
+<h4>Create a vector <code>first_ten</code> that has the values 10 through 20 in it (using</h4>
+</div>
+<div id="the-operator" class="section level4">
+<h4>the : operator)</h4>
+<pre class="r"><code>first_ten &lt;- 10:20
+first_ten</code></pre>
+<pre><code>##  [1] 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+</div>
+<div id="create-a-vector-next_ten-that-has-the-values-21-through-30-in-it-using-the" class="section level4">
+<h4>Create a vector <code>next_ten</code> that has the values 21 through 30 in it (using the</h4>
+</div>
+<div id="seq-function" class="section level4">
+<h4>seq() function)</h4>
+<pre class="r"><code>next_ten &lt;- seq(from=21,to=30)
+next_ten</code></pre>
+<pre><code>##  [1] 21 22 23 24 25 26 27 28 29 30</code></pre>
+</div>
+<div id="create-a-vector-all_numbers-by-combining-the-previous-two-vectors" class="section level4">
+<h4>Create a vector <code>all_numbers</code> by combining the previous two vectors</h4>
+<pre class="r"><code>all_numbers &lt;- c(first_ten,next_ten)
+all_numbers</code></pre>
+<pre><code>##  [1] 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30</code></pre>
+</div>
+<div id="create-a-variable-eleventh-that-contains-the-11th-element-in-all_numbers" class="section level4">
+<h4>Create a variable <code>eleventh</code> that contains the 11th element in <code>all_numbers</code></h4>
+<pre class="r"><code>eleventh &lt;- all_numbers[11]
+eleventh</code></pre>
+<pre><code>## [1] 20</code></pre>
+</div>
+<div id="create-a-vector-some_numbers-that-contains-the-2nd-through-the-5th-elements" class="section level4">
+<h4>Create a vector <code>some_numbers</code> that contains the 2nd through the 5th elements</h4>
+</div>
+<div id="of-all_numbers" class="section level4">
+<h4>of <code>all_numbers</code></h4>
+<pre class="r"><code>some_numbers &lt;- all_numbers[2:5]
+some_numbers</code></pre>
+<pre><code>## [1] 11 12 13 14</code></pre>
+</div>
+<div id="create-a-vector-even-that-holds-the-even-numbers-from-1-to-100" class="section level4">
+<h4>Create a vector <code>even</code> that holds the even numbers from 1 to 100</h4>
+<pre class="r"><code>even &lt;- seq(from=2,to=100, by=2)
+even</code></pre>
+<pre><code>##  [1]   2   4   6   8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38
+## [20]  40  42  44  46  48  50  52  54  56  58  60  62  64  66  68  70  72  74  76
+## [39]  78  80  82  84  86  88  90  92  94  96  98 100</code></pre>
+</div>
+<div id="using-the-all-function-and-modulo-operator-confirm-that-all-of-the" class="section level4">
+<h4>Using the <code>all()</code> function and <code>%%</code> (modulo) operator, confirm that all of the</h4>
+</div>
+<div id="numbers-in-your-even-vector-are-even" class="section level4">
+<h4>numbers in your <code>even</code> vector are even</h4>
+<pre class="r"><code>all(even %% 2 == 0)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="create-a-vector-phone_numbers-that-contains-the-numbers-8-6-7-5-3-0-9" class="section level4">
+<h4>Create a vector <code>phone_numbers</code> that contains the numbers 8, 6, 7, 5, 3, 0, 9</h4>
+<pre class="r"><code>phone_numbers &lt;- c(8,6,7,5,3,0,9)
+phone_numbers</code></pre>
+<pre><code>## [1] 8 6 7 5 3 0 9</code></pre>
+</div>
+<div id="create-a-vector-prefix-that-has-the-first-three-elements-of-phone_numbers" class="section level4">
+<h4>Create a vector <code>prefix</code> that has the first three elements of <code>phone_numbers</code></h4>
+<pre class="r"><code>prefix &lt;- phone_numbers[1:3]
+prefix</code></pre>
+<pre><code>## [1] 8 6 7</code></pre>
+</div>
+<div id="create-a-vector-small-that-has-the-values-of-phone_numbers-that-are" class="section level4">
+<h4>Create a vector <code>small</code> that has the values of <code>phone_numbers</code> that are</h4>
+</div>
+<div id="less-than-or-equal-to-5" class="section level4">
+<h4>less than or equal to 5</h4>
+<pre class="r"><code>small &lt;- phone_numbers[phone_numbers &lt;= 5]
+small</code></pre>
+<pre><code>## [1] 5 3 0</code></pre>
+</div>
+<div id="create-a-vector-large-that-has-the-values-of-phone_numbers-that-are" class="section level4">
+<h4>Create a vector <code>large</code> that has the values of <code>phone_numbers</code> that are</h4>
+</div>
+<div id="strictly-greater-than-5" class="section level4">
+<h4>strictly greater than 5</h4>
+<pre class="r"><code>large &lt;- phone_numbers[phone_numbers &gt; 5]
+large</code></pre>
+<pre><code>## [1] 8 6 7 9</code></pre>
+</div>
+<div id="replace-the-values-in-phone_numbers-that-are-larger-than-5-with-the-number-5" class="section level4">
+<h4>Replace the values in <code>phone_numbers</code> that are larger than 5 with the number 5</h4>
+<pre class="r"><code>phone_numbers[phone_numbers &gt; 5] &lt;- 5
+phone_numbers</code></pre>
+<pre><code>## [1] 5 5 5 5 3 0 5</code></pre>
+</div>
+<div id="replace-every-odd-numbered-value-in-phone_numbers-with-the-number-0" class="section level4">
+<h4>Replace every odd-numbered value in <code>phone_numbers</code> with the number 0</h4>
+<pre class="r"><code>phone_numbers[phone_numbers %% 2 != 0] &lt;- 0
+phone_numbers</code></pre>
+<pre><code>## [1] 0 0 0 0 0 0 0</code></pre>
+</div>
+</div>
+<div id="exercise-3-vector-practice" class="section level3">
+<h3>Exercise 3: vector practice</h3>
+<div id="create-a-vector-words-of-6-or-more-words." class="section level4">
+<h4>Create a vector <code>words</code> of 6 (or more) words.</h4>
+</div>
+<div id="you-can-google-for-a-random-word-generator-if-you-wish" class="section level4">
+<h4>You can Google for a “random word generator” if you wish!</h4>
+<pre class="r"><code>words &lt;- c(&quot;table&quot;, &quot;desk&quot;, &quot;microscope&quot;, &quot;laptop&quot;,&quot;keyboard&quot;,&quot;mouse&quot;)
+words</code></pre>
+<pre><code>## [1] &quot;table&quot;      &quot;desk&quot;       &quot;microscope&quot; &quot;laptop&quot;     &quot;keyboard&quot;  
+## [6] &quot;mouse&quot;</code></pre>
+</div>
+<div id="create-a-vector-words_of_the_day-that-is-your-words-vector-with-the-string" class="section level4">
+<h4>Create a vector <code>words_of_the_day</code> that is your <code>words</code> vector with the string</h4>
+</div>
+<div id="is-the-word-of-the-day-pasted-on-to-the-end." class="section level4">
+<h4>“is the word of the day!” pasted on to the end.</h4>
+</div>
+<div id="bonus-surround-the-word-in-quotes-e.g.-data-is-the-word-of-the-day" class="section level4">
+<h4>BONUS: Surround the word in quotes (e.g., <code>&#39;data&#39; is the word of the day!</code>)</h4>
+</div>
+<div id="note-that-the-results-are-more-obviously-correct-with-single-quotes." class="section level4">
+<h4>Note that the results are more obviously correct with single quotes.</h4>
+<pre class="r"><code>words_of_the_day &lt;- paste(&quot;&#39;&quot;,words,&quot;&#39; is the word of the day!&quot;, sep = &quot;&quot;)
+words_of_the_day</code></pre>
+<pre><code>## [1] &quot;&#39;table&#39; is the word of the day!&quot;     
+## [2] &quot;&#39;desk&#39; is the word of the day!&quot;      
+## [3] &quot;&#39;microscope&#39; is the word of the day!&quot;
+## [4] &quot;&#39;laptop&#39; is the word of the day!&quot;    
+## [5] &quot;&#39;keyboard&#39; is the word of the day!&quot;  
+## [6] &quot;&#39;mouse&#39; is the word of the day!&quot;</code></pre>
+</div>
+<div id="create-a-vector-a_f_words-which-are-the-elements-in-words-that-start-with" class="section level4">
+<h4>Create a vector <code>a_f_words</code> which are the elements in <code>words</code> that start with</h4>
+</div>
+<div id="a-through-f" class="section level4">
+<h4>“a” through “f”</h4>
+</div>
+<div id="hint-use-a-comparison-operator-to-see-if-the-word-comes-before-f-alphabetically" class="section level4">
+<h4>Hint: use a comparison operator to see if the word comes before “f” alphabetically!</h4>
+</div>
+<div id="tip-make-sure-all-the-words-are-lower-case-and-only-consider-the-first-letter" class="section level4">
+<h4>Tip: make sure all the words are lower-case, and only consider the first letter</h4>
+</div>
+<div id="of-the-word" class="section level4">
+<h4>of the word!</h4>
+<pre class="r"><code>a_f_words &lt;- words[substring(words,1,2) &lt;= &quot;f&quot;]
+a_f_words</code></pre>
+<pre><code>## [1] &quot;desk&quot;</code></pre>
+</div>
+<div id="create-a-vector-g_m_words-which-are-the-elements-in-words-that-start-with" class="section level4">
+<h4>Create a vector <code>g_m_words</code> which are the elements in <code>words</code> that start with</h4>
+</div>
+<div id="g-through-m" class="section level4">
+<h4>“g” through “m”</h4>
+<pre class="r"><code>g_m_words &lt;- words[substring(words,1,1) &gt;= &quot;g&quot; &amp; substring(words,1,1) &lt;= &quot;m&quot;]
+g_m_words</code></pre>
+<pre><code>## [1] &quot;microscope&quot; &quot;laptop&quot;     &quot;keyboard&quot;   &quot;mouse&quot;</code></pre>
+</div>
+<div id="define-a-function-word_bin-that-takes-in-three-arguments-a-vector-of-words" class="section level4">
+<h4>Define a function <code>word_bin</code> that takes in three arguments: a vector of words,</h4>
+</div>
+<div id="and-two-letters.-the-function-should-return-a-vector-of-words-that-go-between" class="section level4">
+<h4>and two letters. The function should return a vector of words that go between</h4>
+</div>
+<div id="those-letters-alphabetically." class="section level4">
+<h4>those letters alphabetically.</h4>
+<pre class="r"><code>word_bin &lt;- function(words,start,end) {
+  words[substring(words,1,1) &gt;= start &amp; substring(words,1,1) &lt;= end]
+}</code></pre>
+</div>
+<div id="use-your-word_bin-function-to-determine-which-of-your-words-start-with-e" class="section level4">
+<h4>Use your <code>word_bin</code> function to determine which of your words start with “e”</h4>
+</div>
+<div id="through-q" class="section level4">
+<h4>through “q”</h4>
+<pre class="r"><code>word_bin(words,&quot;e&quot;,&quot;q&quot;)</code></pre>
+<pre><code>## [1] &quot;microscope&quot; &quot;laptop&quot;     &quot;keyboard&quot;   &quot;mouse&quot;</code></pre>
+</div>
+</div>
+<div id="chapter-8" class="section level3">
+<h3>Chapter 8</h3>
+<div id="exercise-1-creating-and-accessing-lists" class="section level4">
+<h4>Exercise 1: creating and accessing lists</h4>
+</div>
+<div id="create-a-vector-my_breakfast-of-everything-you-ate-for-breakfast" class="section level4">
+<h4>Create a vector <code>my_breakfast</code> of everything you ate for breakfast</h4>
+<pre class="r"><code>my_breakfast &lt;- c(&quot;milk&quot;,&quot;cereal&quot;)
+my_breakfast</code></pre>
+<pre><code>## [1] &quot;milk&quot;   &quot;cereal&quot;</code></pre>
+</div>
+<div id="create-a-vector-my_lunch-of-everything-you-ate-or-will-eat-for-lunch" class="section level4">
+<h4>Create a vector <code>my_lunch</code> of everything you ate (or will eat) for lunch</h4>
+<pre class="r"><code>my_lunch &lt;- c(&quot;rice&quot;,&quot;beans&quot;,&quot;chicken&quot;,&quot;potato&quot;,&quot;veggies&quot;)
+my_lunch</code></pre>
+<pre><code>## [1] &quot;rice&quot;    &quot;beans&quot;   &quot;chicken&quot; &quot;potato&quot;  &quot;veggies&quot;</code></pre>
+</div>
+<div id="create-a-list-meals-that-has-contains-your-breakfast-and-lunch" class="section level4">
+<h4>Create a list <code>meals</code> that has contains your breakfast and lunch</h4>
+<pre class="r"><code>meals &lt;- list(breakfast=my_breakfast,lunch=my_lunch)
+meals</code></pre>
+<pre><code>## $breakfast
+## [1] &quot;milk&quot;   &quot;cereal&quot;
+## 
+## $lunch
+## [1] &quot;rice&quot;    &quot;beans&quot;   &quot;chicken&quot; &quot;potato&quot;  &quot;veggies&quot;</code></pre>
+</div>
+<div id="add-a-dinner-element-to-your-meals-list-that-has-what-you-plan-to-eat" class="section level4">
+<h4>Add a “dinner” element to your <code>meals</code> list that has what you plan to eat</h4>
+</div>
+<div id="for-dinner" class="section level4">
+<h4>for dinner</h4>
+<pre class="r"><code>meals$dinner &lt;- c(&quot;sushi&quot;,&quot;coke&quot;)</code></pre>
+</div>
+<div id="use-dollar-notation-to-extract-your-dinner-element-from-your-list" class="section level4">
+<h4>Use dollar notation to extract your <code>dinner</code> element from your list</h4>
+</div>
+<div id="and-save-it-in-a-vector-called-dinner" class="section level4">
+<h4>and save it in a vector called ‘dinner’</h4>
+<pre class="r"><code>dinner &lt;- meals$dinner
+dinner</code></pre>
+<pre><code>## [1] &quot;sushi&quot; &quot;coke&quot;</code></pre>
+</div>
+<div id="use-double-bracket-notation-to-extract-your-lunch-element-from-your-list" class="section level4">
+<h4>Use double-bracket notation to extract your <code>lunch</code> element from your list</h4>
+</div>
+<div id="and-save-it-in-your-list-as-the-element-at-index-5-no-reason-beyond-practice" class="section level4">
+<h4>and save it in your list as the element at index 5 (no reason beyond practice)</h4>
+<pre class="r"><code>meals[[5]] &lt;- meals[[&quot;lunch&quot;]]
+meals[[5]]</code></pre>
+<pre><code>## [1] &quot;rice&quot;    &quot;beans&quot;   &quot;chicken&quot; &quot;potato&quot;  &quot;veggies&quot;</code></pre>
+</div>
+<div id="use-single-bracket-notation-to-extract-your-breakfast-and-lunch-from-your-list" class="section level4">
+<h4>Use single-bracket notation to extract your breakfast and lunch from your list</h4>
+</div>
+<div id="and-save-them-to-a-list-called-early_meals" class="section level4">
+<h4>and save them to a list called <code>early_meals</code></h4>
+<pre class="r"><code>early_meals &lt;- meals[1:2]
+early_meals</code></pre>
+<pre><code>## $breakfast
+## [1] &quot;milk&quot;   &quot;cereal&quot;
+## 
+## $lunch
+## [1] &quot;rice&quot;    &quot;beans&quot;   &quot;chicken&quot; &quot;potato&quot;  &quot;veggies&quot;</code></pre>
+</div>
+</div>
+<div id="challenge" class="section level3">
+<h3>Challenge</h3>
+<div id="create-a-list-that-has-the-number-of-items-you-ate-for-each-meal" class="section level4">
+<h4>Create a list that has the number of items you ate for each meal</h4>
+</div>
+<div id="hint-use-the-lapply-function-to-apply-the-length-function-to-each-item" class="section level4">
+<h4>Hint: use the <code>lapply()</code> function to apply the <code>length()</code> function to each item</h4>
+<pre class="r"><code>lapply(meals,length)</code></pre>
+<pre><code>## $breakfast
+## [1] 2
+## 
+## $lunch
+## [1] 5
+## 
+## $dinner
+## [1] 2
+## 
+## [[4]]
+## [1] 0
+## 
+## [[5]]
+## [1] 5</code></pre>
+</div>
+<div id="write-a-function-add_pizza-that-adds-pizza-to-a-given-meal-vector-and" class="section level4">
+<h4>Write a function <code>add_pizza</code> that adds pizza to a given meal vector, and</h4>
+</div>
+<div id="returns-the-pizza-fied-vector" class="section level4">
+<h4>returns the pizza-fied vector</h4>
+<pre class="r"><code>add_pizza &lt;- function(meal) {
+  meals &lt;- c(meal,&quot;pizza&quot;)
+  meals
+}</code></pre>
+</div>
+<div id="create-a-vector-better_meals-that-is-all-your-meals-but-with-pizza" class="section level4">
+<h4>Create a vector <code>better_meals</code> that is all your meals, but with pizza!</h4>
+<pre class="r"><code>better_meals &lt;- c(add_pizza(meals))
+better_meals</code></pre>
+<pre><code>## $breakfast
+## [1] &quot;milk&quot;   &quot;cereal&quot;
+## 
+## $lunch
+## [1] &quot;rice&quot;    &quot;beans&quot;   &quot;chicken&quot; &quot;potato&quot;  &quot;veggies&quot;
+## 
+## $dinner
+## [1] &quot;sushi&quot; &quot;coke&quot; 
+## 
+## [[4]]
+## NULL
+## 
+## [[5]]
+## [1] &quot;rice&quot;    &quot;beans&quot;   &quot;chicken&quot; &quot;potato&quot;  &quot;veggies&quot;
+## 
+## [[6]]
+## [1] &quot;pizza&quot;</code></pre>
+</div>
+</div>
+<div id="exercise-2-using-apply-functions" class="section level3">
+<h3>Exercise 2: using <code>*apply()</code> functions</h3>
+<div id="create-a-list-of-10-random-numbers.-use-the-runif-function-to-make-a" class="section level4">
+<h4>Create a <em>list</em> of 10 random numbers. Use the <code>runif()</code> function to make a</h4>
+</div>
+<div id="vector-of-random-numbers-then-use-as.list-to-convert-that-to-a-list" class="section level4">
+<h4>vector of random numbers, then use <code>as.list()</code> to convert that to a list</h4>
+<pre class="r"><code>ten_randon_number &lt;- as.list(runif(10))
+ten_randon_number</code></pre>
+<pre><code>## [[1]]
+## [1] 0.8623093
+## 
+## [[2]]
+## [1] 0.1478234
+## 
+## [[3]]
+## [1] 0.5615879
+## 
+## [[4]]
+## [1] 0.2242785
+## 
+## [[5]]
+## [1] 0.9913392
+## 
+## [[6]]
+## [1] 0.7431934
+## 
+## [[7]]
+## [1] 0.5449819
+## 
+## [[8]]
+## [1] 0.009353812
+## 
+## [[9]]
+## [1] 0.3954899
+## 
+## [[10]]
+## [1] 0.4626424</code></pre>
+</div>
+<div id="use-lapply-to-apply-the-round-function-to-each-number-rounding-it-to" class="section level4">
+<h4>Use <code>lapply()</code> to apply the <code>round()</code> function to each number, rounding it to</h4>
+</div>
+</div>
+</div>
+</div>
+<div id="the-nearest-0.1-one-decimal-place" class="section level1">
+<h1>the nearest 0.1 (one decimal place)</h1>
+<pre class="r"><code>rounded_ten_random_numbers &lt;- lapply(ten_randon_number,round,1)
+rounded_ten_random_numbers</code></pre>
+<pre><code>## [[1]]
+## [1] 0.9
+## 
+## [[2]]
+## [1] 0.1
+## 
+## [[3]]
+## [1] 0.6
+## 
+## [[4]]
+## [1] 0.2
+## 
+## [[5]]
+## [1] 1
+## 
+## [[6]]
+## [1] 0.7
+## 
+## [[7]]
+## [1] 0.5
+## 
+## [[8]]
+## [1] 0
+## 
+## [[9]]
+## [1] 0.4
+## 
+## [[10]]
+## [1] 0.5</code></pre>
+<div id="create-a-variable-sentence-that-contains-a-sentence-of-text-something" class="section level4">
+<h4>Create a variable ‘sentence’ that contains a sentence of text (something</h4>
+</div>
+<div id="longish.-make-the-sentence-lowercase-you-can-use-a-function-to-help." class="section level4">
+<h4>longish). Make the sentence lowercase; you can use a function to help.</h4>
+<pre class="r"><code>sentence &lt;- tolower(&quot;The Lawes will work to transform you into a calmer and more strategic observer of people, helping to free you from all the motional drama that needlessly drains you.&quot;)
+sentence  </code></pre>
+<pre><code>## [1] &quot;the lawes will work to transform you into a calmer and more strategic observer of people, helping to free you from all the motional drama that needlessly drains you.&quot;</code></pre>
+</div>
+<div id="use-the-strsplit-function-to-split-the-sentence-into-a-vector-of-letters." class="section level4">
+<h4>Use the <code>strsplit()</code> function to split the sentence into a vector of letters.</h4>
+</div>
+<div id="hint-split-on-to-split-every-character" class="section level4">
+<h4>Hint: split on <code>&quot;&quot;</code> to split every character</h4>
+</div>
+<div id="note-this-will-return-a-list-with-1-element-which-is-the-vector-of-letters" class="section level4">
+<h4>Note: this will return a <em>list</em> with 1 element (which is the vector of letters)</h4>
+<pre class="r"><code>split_sentence &lt;- strsplit(sentence,split=&quot;&quot;)
+split_sentence</code></pre>
+<pre><code>## [[1]]
+##   [1] &quot;t&quot; &quot;h&quot; &quot;e&quot; &quot; &quot; &quot;l&quot; &quot;a&quot; &quot;w&quot; &quot;e&quot; &quot;s&quot; &quot; &quot; &quot;w&quot; &quot;i&quot; &quot;l&quot; &quot;l&quot; &quot; &quot; &quot;w&quot; &quot;o&quot; &quot;r&quot;
+##  [19] &quot;k&quot; &quot; &quot; &quot;t&quot; &quot;o&quot; &quot; &quot; &quot;t&quot; &quot;r&quot; &quot;a&quot; &quot;n&quot; &quot;s&quot; &quot;f&quot; &quot;o&quot; &quot;r&quot; &quot;m&quot; &quot; &quot; &quot;y&quot; &quot;o&quot; &quot;u&quot;
+##  [37] &quot; &quot; &quot;i&quot; &quot;n&quot; &quot;t&quot; &quot;o&quot; &quot; &quot; &quot;a&quot; &quot; &quot; &quot;c&quot; &quot;a&quot; &quot;l&quot; &quot;m&quot; &quot;e&quot; &quot;r&quot; &quot; &quot; &quot;a&quot; &quot;n&quot; &quot;d&quot;
+##  [55] &quot; &quot; &quot;m&quot; &quot;o&quot; &quot;r&quot; &quot;e&quot; &quot; &quot; &quot;s&quot; &quot;t&quot; &quot;r&quot; &quot;a&quot; &quot;t&quot; &quot;e&quot; &quot;g&quot; &quot;i&quot; &quot;c&quot; &quot; &quot; &quot;o&quot; &quot;b&quot;
+##  [73] &quot;s&quot; &quot;e&quot; &quot;r&quot; &quot;v&quot; &quot;e&quot; &quot;r&quot; &quot; &quot; &quot;o&quot; &quot;f&quot; &quot; &quot; &quot;p&quot; &quot;e&quot; &quot;o&quot; &quot;p&quot; &quot;l&quot; &quot;e&quot; &quot;,&quot; &quot; &quot;
+##  [91] &quot;h&quot; &quot;e&quot; &quot;l&quot; &quot;p&quot; &quot;i&quot; &quot;n&quot; &quot;g&quot; &quot; &quot; &quot;t&quot; &quot;o&quot; &quot; &quot; &quot;f&quot; &quot;r&quot; &quot;e&quot; &quot;e&quot; &quot; &quot; &quot;y&quot; &quot;o&quot;
+## [109] &quot;u&quot; &quot; &quot; &quot;f&quot; &quot;r&quot; &quot;o&quot; &quot;m&quot; &quot; &quot; &quot;a&quot; &quot;l&quot; &quot;l&quot; &quot; &quot; &quot;t&quot; &quot;h&quot; &quot;e&quot; &quot; &quot; &quot;m&quot; &quot;o&quot; &quot;t&quot;
+## [127] &quot;i&quot; &quot;o&quot; &quot;n&quot; &quot;a&quot; &quot;l&quot; &quot; &quot; &quot;d&quot; &quot;r&quot; &quot;a&quot; &quot;m&quot; &quot;a&quot; &quot; &quot; &quot;t&quot; &quot;h&quot; &quot;a&quot; &quot;t&quot; &quot; &quot; &quot;n&quot;
+## [145] &quot;e&quot; &quot;e&quot; &quot;d&quot; &quot;l&quot; &quot;e&quot; &quot;s&quot; &quot;s&quot; &quot;l&quot; &quot;y&quot; &quot; &quot; &quot;d&quot; &quot;r&quot; &quot;a&quot; &quot;i&quot; &quot;n&quot; &quot;s&quot; &quot; &quot; &quot;y&quot;
+## [163] &quot;o&quot; &quot;u&quot; &quot;.&quot;</code></pre>
+</div>
+<div id="extract-the-vector-of-letters-from-the-resulting-list" class="section level4">
+<h4>Extract the vector of letters from the resulting list</h4>
+<pre class="r"><code>letters &lt;- split_sentence[[1]]
+letters</code></pre>
+<pre><code>##   [1] &quot;t&quot; &quot;h&quot; &quot;e&quot; &quot; &quot; &quot;l&quot; &quot;a&quot; &quot;w&quot; &quot;e&quot; &quot;s&quot; &quot; &quot; &quot;w&quot; &quot;i&quot; &quot;l&quot; &quot;l&quot; &quot; &quot; &quot;w&quot; &quot;o&quot; &quot;r&quot;
+##  [19] &quot;k&quot; &quot; &quot; &quot;t&quot; &quot;o&quot; &quot; &quot; &quot;t&quot; &quot;r&quot; &quot;a&quot; &quot;n&quot; &quot;s&quot; &quot;f&quot; &quot;o&quot; &quot;r&quot; &quot;m&quot; &quot; &quot; &quot;y&quot; &quot;o&quot; &quot;u&quot;
+##  [37] &quot; &quot; &quot;i&quot; &quot;n&quot; &quot;t&quot; &quot;o&quot; &quot; &quot; &quot;a&quot; &quot; &quot; &quot;c&quot; &quot;a&quot; &quot;l&quot; &quot;m&quot; &quot;e&quot; &quot;r&quot; &quot; &quot; &quot;a&quot; &quot;n&quot; &quot;d&quot;
+##  [55] &quot; &quot; &quot;m&quot; &quot;o&quot; &quot;r&quot; &quot;e&quot; &quot; &quot; &quot;s&quot; &quot;t&quot; &quot;r&quot; &quot;a&quot; &quot;t&quot; &quot;e&quot; &quot;g&quot; &quot;i&quot; &quot;c&quot; &quot; &quot; &quot;o&quot; &quot;b&quot;
+##  [73] &quot;s&quot; &quot;e&quot; &quot;r&quot; &quot;v&quot; &quot;e&quot; &quot;r&quot; &quot; &quot; &quot;o&quot; &quot;f&quot; &quot; &quot; &quot;p&quot; &quot;e&quot; &quot;o&quot; &quot;p&quot; &quot;l&quot; &quot;e&quot; &quot;,&quot; &quot; &quot;
+##  [91] &quot;h&quot; &quot;e&quot; &quot;l&quot; &quot;p&quot; &quot;i&quot; &quot;n&quot; &quot;g&quot; &quot; &quot; &quot;t&quot; &quot;o&quot; &quot; &quot; &quot;f&quot; &quot;r&quot; &quot;e&quot; &quot;e&quot; &quot; &quot; &quot;y&quot; &quot;o&quot;
+## [109] &quot;u&quot; &quot; &quot; &quot;f&quot; &quot;r&quot; &quot;o&quot; &quot;m&quot; &quot; &quot; &quot;a&quot; &quot;l&quot; &quot;l&quot; &quot; &quot; &quot;t&quot; &quot;h&quot; &quot;e&quot; &quot; &quot; &quot;m&quot; &quot;o&quot; &quot;t&quot;
+## [127] &quot;i&quot; &quot;o&quot; &quot;n&quot; &quot;a&quot; &quot;l&quot; &quot; &quot; &quot;d&quot; &quot;r&quot; &quot;a&quot; &quot;m&quot; &quot;a&quot; &quot; &quot; &quot;t&quot; &quot;h&quot; &quot;a&quot; &quot;t&quot; &quot; &quot; &quot;n&quot;
+## [145] &quot;e&quot; &quot;e&quot; &quot;d&quot; &quot;l&quot; &quot;e&quot; &quot;s&quot; &quot;s&quot; &quot;l&quot; &quot;y&quot; &quot; &quot; &quot;d&quot; &quot;r&quot; &quot;a&quot; &quot;i&quot; &quot;n&quot; &quot;s&quot; &quot; &quot; &quot;y&quot;
+## [163] &quot;o&quot; &quot;u&quot; &quot;.&quot;</code></pre>
+</div>
+<div id="use-the-unique-function-to-get-a-vector-of-unique-letters" class="section level4">
+<h4>Use the <code>unique()</code> function to get a vector of unique letters</h4>
+<pre class="r"><code>unique_letters &lt;- unique(letters)
+unique_letters</code></pre>
+<pre><code>##  [1] &quot;t&quot; &quot;h&quot; &quot;e&quot; &quot; &quot; &quot;l&quot; &quot;a&quot; &quot;w&quot; &quot;s&quot; &quot;i&quot; &quot;o&quot; &quot;r&quot; &quot;k&quot; &quot;n&quot; &quot;f&quot; &quot;m&quot; &quot;y&quot; &quot;u&quot; &quot;c&quot; &quot;d&quot;
+## [20] &quot;g&quot; &quot;b&quot; &quot;v&quot; &quot;p&quot; &quot;,&quot; &quot;.&quot;</code></pre>
+</div>
+<div id="define-a-function-count_occurrences-that-takes-in-two-parameters-a-letter" class="section level4">
+<h4>Define a function <code>count_occurrences</code> that takes in two parameters: a letter</h4>
+</div>
+<div id="and-a-vector-of-letters.-the-function-should-return-how-many-times-that-letter" class="section level4">
+<h4>and a vector of letters. The function should return how many times that letter</h4>
+</div>
+<div id="occurs-in-the-provided-vector." class="section level4">
+<h4>occurs in the provided vector.</h4>
+</div>
+<div id="hint-use-a-filter-operation" class="section level4">
+<h4>Hint: use a filter operation!</h4>
+<pre class="r"><code>count_occurrences &lt;- function(letter,vector) {
+  length(vector[vector==letter])
+}</code></pre>
+</div>
+<div id="call-your-count_occurrences-function-to-see-how-many-times-the-letter-e" class="section level4">
+<h4>Call your <code>count_occurrences()</code> function to see how many times the letter ‘e’</h4>
+</div>
+<div id="is-in-your-sentence." class="section level4">
+<h4>is in your sentence.</h4>
+<pre class="r"><code>count_occurrences(&quot;e&quot;,unique_letters)</code></pre>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="use-sapply-to-apply-your-count_occurrences-function-to-each-unique" class="section level4">
+<h4>Use <code>sapply()</code> to apply your <code>count_occurrences()</code> function to each unique</h4>
+</div>
+<div id="letter-in-the-vector-to-determine-their-frequencies." class="section level4">
+<h4>letter in the vector to determine their frequencies.</h4>
+</div>
+<div id="convert-the-result-into-a-list-using-as.list." class="section level4">
+<h4>Convert the result into a list (using <code>as.list()</code>).</h4>
+<pre class="r"><code>frequencies &lt;- as.list(
+  sapply(
+    unique_letters,count_occurrences,letters
+  )
+)</code></pre>
+</div>
+<div id="print-the-resulting-list-of-frequencies" class="section level4">
+<h4>Print the resulting list of frequencies</h4>
+<pre class="r"><code>frequencies</code></pre>
+<pre><code>## $t
+## [1] 11
+## 
+## $h
+## [1] 4
+## 
+## $e
+## [1] 16
+## 
+## $` `
+## [1] 28
+## 
+## $l
+## [1] 11
+## 
+## $a
+## [1] 12
+## 
+## $w
+## [1] 3
+## 
+## $s
+## [1] 7
+## 
+## $i
+## [1] 6
+## 
+## $o
+## [1] 15
+## 
+## $r
+## [1] 12
+## 
+## $k
+## [1] 1
+## 
+## $n
+## [1] 7
+## 
+## $f
+## [1] 4
+## 
+## $m
+## [1] 6
+## 
+## $y
+## [1] 4
+## 
+## $u
+## [1] 3
+## 
+## $c
+## [1] 2
+## 
+## $d
+## [1] 4
+## 
+## $g
+## [1] 2
+## 
+## $b
+## [1] 1
+## 
+## $v
+## [1] 1
+## 
+## $p
+## [1] 3
+## 
+## $`,`
+## [1] 1
+## 
+## $.
+## [1] 1</code></pre>
+</div>
+<div id="chapter-11" class="section level2">
+<h2>Chapter 11</h2>
+<div id="exercise-1-working-with-data-frames-review" class="section level3">
+<h3>Exercise 1: working with data frames (review)</h3>
+<div id="install-devtools-package-allows-installations-from-github" class="section level4">
+<h4>Install devtools package: allows installations from GitHub</h4>
+<pre class="r"><code># install.packages(&quot;devtools&quot;) - this has been commented out so it doesn&#39;t install every time a run the codes. &quot;devtools&quot; package has been installed.</code></pre>
+</div>
+<div id="install-fueleconomy-dataset-from-github" class="section level4">
+<h4>Install “fueleconomy” dataset from GitHub</h4>
+<pre class="r"><code># devtools::install_github(&quot;hadley/fueleconomy&quot;) - this has been commented out so it doesn&#39;t install every time a run the codes. &quot;fueleconomy&quot; package has been installed.</code></pre>
+</div>
+<div id="use-the-libary-function-to-load-the-fueleconomy-package" class="section level4">
+<h4>Use the <code>libary()</code> function to load the “fueleconomy” package</h4>
+<pre class="r"><code>library(fueleconomy)</code></pre>
+</div>
+<div id="you-should-now-have-access-to-the-vehicles-data-frame" class="section level4">
+<h4>You should now have access to the <code>vehicles</code> data frame</h4>
+</div>
+<div id="you-can-use-view-to-inspect-it" class="section level4">
+<h4>You can use <code>View()</code> to inspect it</h4>
+<pre class="r"><code># View(vehicles) - this has been commented out as this dataset is humongous.</code></pre>
+</div>
+<div id="select-the-different-manufacturers-makes-of-the-cars-in-this-data-set." class="section level4">
+<h4>Select the different manufacturers (makes) of the cars in this data set.</h4>
+</div>
+<div id="save-this-vector-in-a-variable" class="section level4">
+<h4>Save this vector in a variable</h4>
+<pre class="r"><code>makes &lt;- vehicles$make</code></pre>
+</div>
+<div id="use-the-unique-function-to-determine-how-many-different-car-manufacturers" class="section level4">
+<h4>Use the <code>unique()</code> function to determine how many different car manufacturers</h4>
+</div>
+<div id="are-represented-by-the-data-set" class="section level4">
+<h4>are represented by the data set</h4>
+<pre class="r"><code>length(unique(makes))</code></pre>
+<pre><code>## [1] 128</code></pre>
+</div>
+<div id="filter-the-data-set-for-vehicles-manufactured-in-1997" class="section level4">
+<h4>Filter the data set for vehicles manufactured in 1997</h4>
+<pre class="r"><code>vehicles_1997 &lt;- vehicles[vehicles$year==1997,]
+vehicles_1997</code></pre>
+<pre><code>## # A tibble: 762 x 12
+##       id make  model        year class trans drive   cyl displ fuel    hwy   cty
+##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 13309 Acura 2.2CL/3.0CL  1997 Subc~ Auto~ Fron~     4   2.2 Regu~    26    20
+##  2 13310 Acura 2.2CL/3.0CL  1997 Subc~ Manu~ Fron~     4   2.2 Regu~    28    22
+##  3 13311 Acura 2.2CL/3.0CL  1997 Subc~ Auto~ Fron~     6   3   Regu~    26    18
+##  4 13421 Acura 2.5TL/3.2TL  1997 Comp~ Auto~ Fron~     5   2.5 Prem~    23    18
+##  5 13422 Acura 2.5TL/3.2TL  1997 Comp~ Auto~ Fron~     6   3.2 Prem~    22    17
+##  6 13537 Acura 3.5RL        1997 Mids~ Auto~ Fron~     6   3.5 Prem~    23    17
+##  7 13306 Acura Integra      1997 Subc~ Manu~ Fron~     4   1.8 Prem~    29    22
+##  8 13307 Acura Integra      1997 Subc~ Auto~ Fron~     4   1.8 Regu~    29    21
+##  9 13308 Acura Integra      1997 Subc~ Manu~ Fron~     4   1.8 Regu~    29    22
+## 10 13919 Acura SLX          1997 Spec~ Auto~ 4-Wh~     6   3.2 Regu~    17    13
+## # ... with 752 more rows</code></pre>
+</div>
+<div id="arrange-the-1997-cars-by-highway-hwy-gas-milage" class="section level4">
+<h4>Arrange the 1997 cars by highway (<code>hwy</code>) gas milage</h4>
+</div>
+<div id="hint-use-the-order-function-to-get-a-vector-of-indices-in-order-by-value" class="section level4">
+<h4>Hint: use the <code>order()</code> function to get a vector of indices in order by value</h4>
+</div>
+<div id="see-also-httpswww.r-bloggers.comr-sorting-a-data-frame-by-the-contents-of-a-column" class="section level4">
+<h4>See also: <a href="https://www.r-bloggers.com/r-sorting-a-data-frame-by-the-contents-of-a-column/" class="uri">https://www.r-bloggers.com/r-sorting-a-data-frame-by-the-contents-of-a-column/</a></h4>
+</div>
+<div id="mutate-the-1997-cars-data-frame-to-add-a-column-average-that-has-the-average" class="section level4">
+<h4>Mutate the 1997 cars data frame to add a column <code>average</code> that has the average</h4>
+</div>
+<div id="gas-milage-between-city-and-highway-mpg-for-each-car" class="section level4">
+<h4>gas milage (between city and highway mpg) for each car</h4>
+</div>
+<div id="filter-the-whole-vehicles-data-set-for-2-wheel-drive-vehicles-that-get-more" class="section level4">
+<h4>Filter the whole vehicles data set for 2-Wheel Drive vehicles that get more</h4>
+</div>
+<div id="than-20-milesgallon-in-the-city." class="section level4">
+<h4>than 20 miles/gallon in the city.</h4>
+</div>
+<div id="save-this-new-data-frame-in-a-variable." class="section level4">
+<h4>Save this new data frame in a variable.</h4>
+</div>
+<div id="of-the-above-vehicles-what-is-the-vehicle-id-of-the-vehicle-with-the-worst" class="section level4">
+<h4>Of the above vehicles, what is the vehicle ID of the vehicle with the worst</h4>
+</div>
+<div id="hwy-mpg" class="section level4">
+<h4>hwy mpg?</h4>
+</div>
+<div id="hint-filter-for-the-worst-vehicle-then-select-its-id." class="section level4">
+<h4>Hint: filter for the worst vehicle, then select its ID.</h4>
+</div>
+<div id="write-a-function-that-takes-a-year_choice-and-a-make_choice-as-parameters" class="section level4">
+<h4>Write a function that takes a <code>year_choice</code> and a <code>make_choice</code> as parameters,</h4>
+</div>
+<div id="and-returns-the-vehicle-model-that-gets-the-most-hwy-milesgallon-of-vehicles" class="section level4">
+<h4>and returns the vehicle model that gets the most hwy miles/gallon of vehicles</h4>
+</div>
+<div id="of-that-make-in-that-year." class="section level4">
+<h4>of that make in that year.</h4>
+</div>
+<div id="youll-need-to-filter-more-and-do-some-selecting" class="section level4">
+<h4>You’ll need to filter more (and do some selecting)!</h4>
+</div>
+<div id="what-was-the-most-efficient-honda-model-of-1995" class="section level4">
+<h4>What was the most efficient Honda model of 1995?</h4>
 </div>
 </div>
 </div>

@@ -5,7 +5,7 @@ date: "09/10/2021"
 output: html_document
 ---
 
-```{r}
+```{r,include=FALSE}
 library(dplyr)
 ```
 
@@ -289,7 +289,7 @@ is_twice_as_long <- function(string1,string2) {
 }
 ```
 
-Book solutions:  -> it is not necessary to use if (conditional) because R already evaluates TRUE or FALSE based on strings lengths.
+Book solution:  -> it is not necessary to use if (conditional) because R already evaluates TRUE or FALSE based on strings lengths.
 ```{r}
 is_twice_as_long_book <- function(str1, str2) {
   diff <- abs(nchar(str1) - nchar(str2))
@@ -340,7 +340,7 @@ describe_difference <- function(string1,string2) {
 ```
 
 #### Call your `describe_difference` function by passing it different length strings
-#### to confirm that it works. Make sure to check all 3 conditions1
+#### to confirm that it works. Make sure to check all 3 conditions
 ```{r}
 describe_difference("Australia","Brazil")
 ```
@@ -467,7 +467,7 @@ even
 #### Using the `all()` function and `%%` (modulo) operator, confirm that all of the
 #### numbers in your `even` vector are even
 ```{r}
-
+all(even %% 2 == 0)
 ```
 
 #### Create a vector `phone_numbers` that contains the numbers 8, 6, 7, 5, 3, 0, 9
@@ -503,6 +503,10 @@ phone_numbers
 ```
 
 #### Replace every odd-numbered value in `phone_numbers` with the number 0
+```{r}
+phone_numbers[phone_numbers %% 2 != 0] <- 0
+phone_numbers
+```
 
 
 ### Exercise 3: vector practice
@@ -519,32 +523,266 @@ words
 #### BONUS: Surround the word in quotes (e.g., `'data' is the word of the day!`)
 #### Note that the results are more obviously correct with single quotes.
 ```{r}
-words_of_the_day <- paste(words, "is the word of the day!")
+words_of_the_day <- paste("'",words,"' is the word of the day!", sep = "")
 words_of_the_day
 ```
-
 
 #### Create a vector `a_f_words` which are the elements in `words` that start with 
 #### "a" through "f"
 #### Hint: use a comparison operator to see if the word comes before "f" alphabetically!
 #### Tip: make sure all the words are lower-case, and only consider the first letter
 #### of the word!
-
+```{r}
+a_f_words <- words[substring(words,1,2) <= "f"]
+a_f_words
+```
 
 #### Create a vector `g_m_words` which are the elements in `words` that start with 
 #### "g" through "m"
-
-
+```{r}
+g_m_words <- words[substring(words,1,1) >= "g" & substring(words,1,1) <= "m"]
+g_m_words
+```
+ 
 #### Define a function `word_bin` that takes in three arguments: a vector of words, 
 #### and two letters. The function should return a vector of words that go between 
 #### those letters alphabetically.
-
+```{r}
+word_bin <- function(words,start,end) {
+  words[substring(words,1,1) >= start & substring(words,1,1) <= end]
+}
+```
 
 #### Use your `word_bin` function to determine which of your words start with "e" 
 #### through "q"
+```{r}
+word_bin(words,"e","q")
+```
+### Chapter 8
+
+#### Exercise 1: creating and accessing lists
+
+#### Create a vector `my_breakfast` of everything you ate for breakfast
+```{r}
+my_breakfast <- c("milk","cereal")
+my_breakfast
+```
+
+#### Create a vector `my_lunch` of everything you ate (or will eat) for lunch
+```{r}
+my_lunch <- c("rice","beans","chicken","potato","veggies")
+my_lunch
+```
+
+#### Create a list `meals` that has contains your breakfast and lunch
+```{r}
+meals <- list(breakfast=my_breakfast,lunch=my_lunch)
+meals
+```
+
+#### Add a "dinner" element to your `meals` list that has what you plan to eat 
+#### for dinner
+```{r}
+meals$dinner <- c("sushi","coke")
+
+```
+
+#### Use dollar notation to extract your `dinner` element from your list
+#### and save it in a vector called 'dinner'
+```{r}
+dinner <- meals$dinner
+dinner
+```
+
+#### Use double-bracket notation to extract your `lunch` element from your list
+#### and save it in your list as the element at index 5 (no reason beyond practice)
+```{r}
+meals[[5]] <- meals[["lunch"]]
+meals[[5]]
+```
+
+#### Use single-bracket notation to extract your breakfast and lunch from your list
+#### and save them to a list called `early_meals`
+```{r}
+early_meals <- meals[1:2]
+early_meals
+```
+
+### Challenge ###
+
+#### Create a list that has the number of items you ate for each meal
+#### Hint: use the `lapply()` function to apply the `length()` function to each item
+```{r}
+lapply(meals,length)
+```
+
+#### Write a function `add_pizza` that adds pizza to a given meal vector, and
+#### returns the pizza-fied vector
+```{r}
+add_pizza <- function(meal) {
+  meals <- c(meal,"pizza")
+  meals
+}
+```
+
+#### Create a vector `better_meals` that is all your meals, but with pizza!
+```{r}
+better_meals <- c(add_pizza(meals))
+better_meals
+```
+
+### Exercise 2: using `*apply()` functions
+
+#### Create a *list* of 10 random numbers. Use the `runif()` function to make a 
+#### vector of random numbers, then use `as.list()` to convert that to a list
+```{r}
+ten_randon_number <- as.list(runif(10))
+ten_randon_number
+```
+
+#### Use `lapply()` to apply the `round()` function to each number, rounding it to 
+# the nearest 0.1 (one decimal place)
+```{r}
+rounded_ten_random_numbers <- lapply(ten_randon_number,round,1)
+rounded_ten_random_numbers
+```
+
+#### Create a variable 'sentence' that contains a sentence of text (something 
+#### longish). Make the sentence lowercase; you can use a function to help.
+```{r}
+sentence <- tolower("The Lawes will work to transform you into a calmer and more strategic observer of people, helping to free you from all the motional drama that needlessly drains you.")
+sentence  
+```
+
+#### Use the `strsplit()` function to split the sentence into a vector of letters.
+#### Hint: split on `""` to split every character
+#### Note: this will return a _list_ with 1 element (which is the vector of letters)
+```{r}
+split_sentence <- strsplit(sentence,split="")
+split_sentence
+```
+
+#### Extract the vector of letters from the resulting list
+```{r}
+letters <- split_sentence[[1]]
+letters
+```
+
+#### Use the `unique()` function to get a vector of unique letters
+```{r}
+unique_letters <- unique(letters)
+unique_letters
+```
+
+#### Define a function `count_occurrences` that takes in two parameters: a letter 
+#### and a vector of letters. The function should return how many times that letter
+#### occurs in the provided vector.
+#### Hint: use a filter operation!
+```{r}
+count_occurrences <- function(letter,vector) {
+  length(vector[vector==letter])
+}
+```
+
+#### Call your `count_occurrences()` function to see how many times the letter 'e'
+#### is in your sentence.
+```{r}
+count_occurrences("e",unique_letters)
+```
 
 
+#### Use `sapply()` to apply your `count_occurrences()` function to each unique 
+#### letter in the vector to determine their frequencies.
+#### Convert the result into a list (using `as.list()`).
+```{r}
+frequencies <- as.list(
+  sapply(
+    unique_letters,count_occurrences,letters
+  )
+)
+```
 
 
+#### Print the resulting list of frequencies
+```{r}
+frequencies
+```
+
+## Chapter 11
+
+### Exercise 1: working with data frames (review)
+
+#### Install devtools package: allows installations from GitHub
+```{r}
+# install.packages("devtools") - this has been commented out so it doesn't install every time a run the codes. "devtools" package has been installed.
+```
+
+#### Install "fueleconomy" dataset from GitHub
+```{r}
+# devtools::install_github("hadley/fueleconomy") - this has been commented out so it doesn't install every time a run the codes. "fueleconomy" package has been installed.
+```
+
+#### Use the `libary()` function to load the "fueleconomy" package
+```{r}
+library(fueleconomy)
+```
+
+#### You should now have access to the `vehicles` data frame
+#### You can use `View()` to inspect it
+```{r}
+# View(vehicles) - this has been commented out as this dataset is humongous.
+```
+
+
+#### Select the different manufacturers (makes) of the cars in this data set. 
+#### Save this vector in a variable
+```{r}
+makes <- vehicles$make
+```
+
+
+#### Use the `unique()` function to determine how many different car manufacturers
+#### are represented by the data set
+```{r}
+length(unique(makes))
+```
+
+
+#### Filter the data set for vehicles manufactured in 1997
+```{r}
+vehicles_1997 <- vehicles[vehicles$year==1997,]
+vehicles_1997
+```
+
+
+#### Arrange the 1997 cars by highway (`hwy`) gas milage
+#### Hint: use the `order()` function to get a vector of indices in order by value
+#### See also: https://www.r-bloggers.com/r-sorting-a-data-frame-by-the-contents-of-a-column/
+```{r}
+order(vehicles_1997)
+```
+
+
+#### Mutate the 1997 cars data frame to add a column `average` that has the average
+#### gas milage (between city and highway mpg) for each car
+
+
+#### Filter the whole vehicles data set for 2-Wheel Drive vehicles that get more
+#### than 20 miles/gallon in the city. 
+#### Save this new data frame in a variable.
+
+
+#### Of the above vehicles, what is the vehicle ID of the vehicle with the worst 
+#### hwy mpg?
+#### Hint: filter for the worst vehicle, then select its ID.
+
+
+#### Write a function that takes a `year_choice` and a `make_choice` as parameters, 
+#### and returns the vehicle model that gets the most hwy miles/gallon of vehicles 
+#### of that make in that year.
+#### You'll need to filter more (and do some selecting)!
+
+
+#### What was the most efficient Honda model of 1995?
 
 
