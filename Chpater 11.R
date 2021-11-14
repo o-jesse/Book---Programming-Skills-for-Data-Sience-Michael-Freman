@@ -105,11 +105,15 @@ View(most_dem_votes)
 most_dem_state <- select(most_dem_votes,state)
 View(most_dem_state)
 
-most_dem_state2 <-
-  
-  
-  
 
+most_dem_state2 <- select(
+  filter(
+    filter(
+      presidentialElections, year == 2008
+    )
+    
+  )
+)
 
 
 
