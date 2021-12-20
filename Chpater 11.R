@@ -110,18 +110,123 @@ most_dem_state2 <- select(
   filter(
     filter(
       presidentialElections, year == 2008
-    )
-    
-  )
+    ),
+    demVote == max(demVote)
+  ),
+  state
+)
+View(most_dem_state2)
+
+
+most_dem_state_pipe <- presidentialElections %>% 
+  filter(year == 2008) %>% 
+  filter(demVote == max(demVote)) %>% 
+  select(state)
+View(most_dem_state_pipe)
+
+View(presidentialElections)
+View(arrange(presidentialElections, state))
+
+grouped <- group_by(
+  presidentialElections,
+  state
 )
 
+state_voting_summary <- presidentialElections %>% 
+  group_by(state) %>% 
+  summarise(
+    mean_dem_vote = mean(demVote),
+    mean_other_parties = mean(other_parties_vote)
+  )
+
+View(state_voting_summary)
 
 
 
+# 11.6 dplyr in Action: Analysing Flight Data
+
+install.packages("nycflights13")
+library(nycflights13)
+
+dim(flights)
+colnames(flights)
+View(flights)
+
+has_most_delays <- flights %>% 
+  group_by(carrier) %>% 
+  filter(dep_delay > 0) %>%
+  summarise(num_delay = n()) %>% 
+  filter(num_delay == max(num_delay)) %>% 
+  select(carrier)
+  
 
 
+View(has_most_delays)  
+  
+most_delayed_name <- has_most_delays %>% 
+  left_join(airlines, by = "carrier") %>% 
+  select(name)
+
+View(most_delayed_name)
+
+#install.packages("writexl")
+#library(writexl)
 
 
+#write_xlsx(
+#  summary_test_functionn,
+#  "C:\\Users\\jesse\\Downloads\\functionn.xlsx"
+#)
 
+#write_xlsx(
+#  flights,
+#  "C:\\Users\\jesse\\Downloads\\flights.xlsx"
+#)
 
+most_delayed_name$name
 
+most_early <- flights %>% 
+  group_by(dest) %>% 
+  summarise(delay = mean(arr_delay))
+
+most_early
+
+most_early_narm <- flights %>% 
+  group_by(dest) %>% 
+  summarise(delay = mean(arr_delay, na.rm = TRUE)) %>% 
+  filter(delay == min(delay, na.rm = TRUE)) %>% 
+  select(dest,delay) %>% 
+  left_join(airports, by = c("dest" = "faa")) %>% 
+  select(dest, name, delay)
+
+most_early_narm
+
+flights %>% 
+  group_by(month) %>% 
+  summarise(delay = mean(arr_delay, na.rm = TRUE)) %>% 
+  filter(delay == max(delay)) %>% 
+  select(month) %>% 
+  print()
+
+  
+library(ggplot2)  
+
+delay_by_month <- flights %>% 
+  group_by(month) %>% 
+  summarise(delay = mean(arr_delay,na.rm=TRUE)) %>% 
+  mutate(month=month.name)
+
+ggplot(data = delay_by_month) +
+  geom_point(
+    mapping = aes(x = delay, y = month),
+    color = "blue",
+    alpha = .4,
+    size = 3
+  ) +
+  geom_vline(xintercept = 0, size = .25) +
+  xlim(c(-20,20))+
+  scale_y_discrete(limits = rev(month.name)) +
+  labs(title = "Average Delay by Month", y= "", x = "delay (minutes)")
+  
+  
+  

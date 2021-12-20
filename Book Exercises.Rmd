@@ -759,17 +759,42 @@ vehicles_1997
 #### Hint: use the `order()` function to get a vector of indices in order by value
 #### See also: https://www.r-bloggers.com/r-sorting-a-data-frame-by-the-contents-of-a-column/
 ```{r}
-order(vehicles_1997)
+vehicles_1997 <- vehicles_1997[order(vehicles$hwy),]
 ```
-
 
 #### Mutate the 1997 cars data frame to add a column `average` that has the average
 #### gas milage (between city and highway mpg) for each car
 
+##### Personal Solution
+```{r}
+cars_1997 <- vehicles_1997 %>% 
+  group_by(make) %>% 
+  mutate(
+    avg = (hwy + cty) / 2
+  )
+```
+
+##### Book Solution
+```{r}
+vehicles_1997$average <- (vehicles_1997$hwy + vehicles_1997$cty) / 2
+```
 
 #### Filter the whole vehicles data set for 2-Wheel Drive vehicles that get more
 #### than 20 miles/gallon in the city. 
 #### Save this new data frame in a variable.
+
+##### Personal solution
+```{r}
+two_wheel_20mpg <- vehicles %>% 
+  filter(
+    drive == "2-Wheel Drive" & cty > 20
+  )
+```
+
+##### Book solution
+```{r}
+two_wheel_20_mpg <- vehicles[vehicles$drive == "2-Wheel Drive" & vehicles$cty > 20,]
+```
 
 
 #### Of the above vehicles, what is the vehicle ID of the vehicle with the worst 
