@@ -710,7 +710,7 @@ frequencies
 
 ## Chapter 11
 
-### Exercise 1: working with data frames (review)
+### Exercise 1 and 2: working with data frames (review)
 
 #### Install devtools package: allows installations from GitHub
 ```{r}
@@ -736,39 +736,68 @@ library(fueleconomy)
 
 #### Select the different manufacturers (makes) of the cars in this data set. 
 #### Save this vector in a variable
+
+##### rbase
 ```{r}
 makes <- vehicles$make
 ```
 
+##### dplyr
+```{r}
+makes <- select(vehicles,make)
+```
 
 #### Use the `unique()` function to determine how many different car manufacturers
 #### are represented by the data set
+#### for dplyr, use `distinct()`
+
+##### non-dplyr
 ```{r}
 length(unique(makes))
 ```
 
+##### dplyr
+```{r}
+vehicles %>% 
+  distinct(make) %>% 
+  nrow()
+```
+
 
 #### Filter the data set for vehicles manufactured in 1997
+##### non-dplyr
 ```{r}
 vehicles_1997 <- vehicles[vehicles$year==1997,]
 vehicles_1997
 ```
-
+##### dplyr
+```{r}
+cars_1997_dplyr <- vehicles %>% 
+  filter(year == 1997)
+```
 
 #### Arrange the 1997 cars by highway (`hwy`) gas milage
 #### Hint: use the `order()` function to get a vector of indices in order by value
 #### See also: https://www.r-bloggers.com/r-sorting-a-data-frame-by-the-contents-of-a-column/
+#### arrange with dplyr
+
+##### non-dplyr
 ```{r}
 vehicles_1997 <- vehicles_1997[order(vehicles$hwy),]
 ```
+##### dplyr
+```{r}
+cars_97_dplyr <- cars_1997_dplyr %>% 
+  arrange(hwy)
+```
+
 
 #### Mutate the 1997 cars data frame to add a column `average` that has the average
 #### gas milage (between city and highway mpg) for each car
 
-##### Personal Solution
+##### Personal Solution (which happens to be dplyr solution)
 ```{r}
 cars_1997 <- vehicles_1997 %>% 
-  group_by(make) %>% 
   mutate(
     avg = (hwy + cty) / 2
   )
@@ -783,7 +812,7 @@ vehicles_1997$average <- (vehicles_1997$hwy + vehicles_1997$cty) / 2
 #### than 20 miles/gallon in the city. 
 #### Save this new data frame in a variable.
 
-##### Personal solution
+##### Personal solution (which happens to be dplyr)
 ```{r}
 two_wheel_20mpg <- vehicles %>% 
   filter(
@@ -801,13 +830,189 @@ two_wheel_20_mpg <- vehicles[vehicles$drive == "2-Wheel Drive" & vehicles$cty > 
 #### hwy mpg?
 #### Hint: filter for the worst vehicle, then select its ID.
 
+##### Personal solution (filtering the entire row, dplyr solution)
+```{r}
+worst_hwy <- two_wheel_20mpg %>% 
+  filter(hwy == min(hwy))
+```
+
+##### Book solution (filtering the entire row)
+```{r}
+worst_hwy2 <- two_wheel_20mpg[two_wheel_20mpg$hwy == min(two_wheel_20mpg$hwy),]
+```
+
+##### Book solution (ID only)
+```{r}
+worst_hwy_book <- two_wheel_20mpg$id[two_wheel_20mpg$hwy == min(two_wheel_20mpg$hwy)]
+```
 
 #### Write a function that takes a `year_choice` and a `make_choice` as parameters, 
 #### and returns the vehicle model that gets the most hwy miles/gallon of vehicles 
 #### of that make in that year.
 #### You'll need to filter more (and do some selecting)!
 
+##### non-dplyr
+```{r}
+year_make_choice <- function(year_choice,make_choice) {
+  filtered <- vehicles[vehicles$year == year_choice & vehicles$make == make_choice,]
+  filtered[filtered$hwy == max(filtered$hwy),"model"]
+  
+}
+```
+
+##### dplyr
+```{r}
+year_make_dplyr <- function(year_dplyr,make_dplyr) {
+  filter_dplyr <- vehicles %>% filter(year == year_dplyr)
+  filter_dplyr <- filter_dplyr %>% filter(make == make_dplyr)
+  filter_dplyr <- filter_dplyr %>% filter(hwy == max(hwy))
+  filter_dplyr <- filter_dplyr %>% select(model)
+  
+  filter_dplyr
+}
+  
+  
+```
+
 
 #### What was the most efficient Honda model of 1995?
+##### non-dplyr
+```{r}
+year_make_choice(1995,"Honda")
+```
+##### dplyr
+```{r}
+year_make_dplyr(1995,"Honda")
+```
+
+
+## Exercise 3: using the pipe operator
+
+### Install (if needed) and load the "dplyr" library
+###install.packages("dplyr")
+```{r}
+# library("dplyr")
+```
+
+#### Install (if needed) and load the "fueleconomy" package
+####install.packages('devtools')
+####devtools::install_github("hadley/fueleconomy")
+```{r}
+# library("fueleconomy")
+```
+
+#### Which 2015 Acura model has the best hwy MGH? (Use dplyr, but without method
+#### chaining or pipes--use temporary variables!)
+```{r}
+Acura1 <- filter(vehicles,year == 2015,make == "Acura")
+Acura_max_hwy <- filter(Acura1, hwy == max(hwy))
+Acura_best_hwy <- select(Acura_max_hwy,model)
+Acura_best_hwy
+```
+
+
+#### Which 2015 Acura model has the best hwy MPG? (Use dplyr, nesting functions)
+```{r}
+Acura_nested <- select(
+                  filter(
+                    filter(vehicles,year==2015,make=="Acura"),
+                    hwy == max(hwy)
+                  ),
+                  model
+                )
+
+Acura_nested
+```
+
+#### Which 2015 Acura model has the best hwy MPG? (Use dplyr and the pipe operator)
+```{r}
+Acura_pipe <- vehicles %>% 
+  filter(year==2015,
+         make=="Acura"
+         ) %>% 
+  filter(hwy == max(hwy)) %>% 
+  select(model)
+```
+
+## Bonus
+
+#### Write 3 functions, one for each approach.  Then,
+#### Test how long it takes to perform each one 1000 times
+
+##### several variables
+```{r}
+Acura_best_variables <- function() {
+  Acura1 <- filter(vehicles, year==2015,make=="Acura")
+  Acura2 <- filter(Acura1, hwy==max(hwy))
+  Acura3 <- select(Acura2, model)
+}
+```
+
+```{r}
+Acura_best_nested <- function () {
+  select(
+    filter(
+      filter(
+        vehicles,
+        year==2015,
+        make=="Acura"
+      ),
+      hwy == max(hwy)
+    ),
+    model
+  )
+}
+```
+
+```{r}
+Acura_best_pipe <- function() {
+  vehicles %>% 
+    filter(year==2015, make=="Acura") %>% 
+    filter(hwy == max(hwy)) %>% 
+    select(model)
+}
+```
+
+```{r}
+system.time(for (i in 1:1000) Acura_best_variables())
+system.time(for (i in 1:1000) Acura_best_nested())
+system.time(for (i in 1:1000) Acura_best_pipe())
+```
+
+## Exercise 4: practicing with dplyr
+
+### install the `"nycflights13"` package. Load(`library()`) the package.
+### you'll also need to load `dplyr`
+```{r}
+#library(nycflights13)
+#dplyr already installed
+```
+
+### The data frame `flights` should now be acessible to you.
+### Use functions to inspect it: how many rows and columns does it have?
+```{r}
+nrow(flights)
+ncol(flights)
+```
+### What are the names of the columns?
+```{r}
+colnames(flights)
+```
+### Use `??flights` to search for documentation on the data set (for what the columns represent)
+```{r}
+#?fligths
+```
+
+### use `dplyr` to give the data frame a new column that is the amount of time
+### gained or lost while flying (that: how much of the delay arriving occured
+### during flight, as opposed to before deparing).
+```{r}
+flights_flying_gain <- flights %>% 
+  mutate(
+    gained_time = arr_delay - dep_delay
+  )
+```
+
+
 
 

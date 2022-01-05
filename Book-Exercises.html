@@ -1056,34 +1056,34 @@ better_meals</code></pre>
 <pre class="r"><code>ten_randon_number &lt;- as.list(runif(10))
 ten_randon_number</code></pre>
 <pre><code>## [[1]]
-## [1] 0.8623093
+## [1] 0.899195
 ## 
 ## [[2]]
-## [1] 0.1478234
+## [1] 0.8425266
 ## 
 ## [[3]]
-## [1] 0.5615879
+## [1] 0.8001838
 ## 
 ## [[4]]
-## [1] 0.2242785
+## [1] 0.2436719
 ## 
 ## [[5]]
-## [1] 0.9913392
+## [1] 0.08400271
 ## 
 ## [[6]]
-## [1] 0.7431934
+## [1] 0.658298
 ## 
 ## [[7]]
-## [1] 0.5449819
+## [1] 0.6733759
 ## 
 ## [[8]]
-## [1] 0.009353812
+## [1] 0.8770395
 ## 
 ## [[9]]
-## [1] 0.3954899
+## [1] 0.511834
 ## 
 ## [[10]]
-## [1] 0.4626424</code></pre>
+## [1] 0.4262333</code></pre>
 </div>
 <div id="use-lapply-to-apply-the-round-function-to-each-number-rounding-it-to" class="section level4">
 <h4>Use <code>lapply()</code> to apply the <code>round()</code> function to each number, rounding it to</h4>
@@ -1099,31 +1099,31 @@ rounded_ten_random_numbers</code></pre>
 ## [1] 0.9
 ## 
 ## [[2]]
-## [1] 0.1
+## [1] 0.8
 ## 
 ## [[3]]
-## [1] 0.6
+## [1] 0.8
 ## 
 ## [[4]]
 ## [1] 0.2
 ## 
 ## [[5]]
-## [1] 1
+## [1] 0.1
 ## 
 ## [[6]]
 ## [1] 0.7
 ## 
 ## [[7]]
-## [1] 0.5
+## [1] 0.7
 ## 
 ## [[8]]
-## [1] 0
+## [1] 0.9
 ## 
 ## [[9]]
-## [1] 0.4
+## [1] 0.5
 ## 
 ## [[10]]
-## [1] 0.5</code></pre>
+## [1] 0.4</code></pre>
 <div id="create-a-variable-sentence-that-contains-a-sentence-of-text-something" class="section level4">
 <h4>Create a variable ‘sentence’ that contains a sentence of text (something</h4>
 </div>
@@ -1294,8 +1294,8 @@ unique_letters</code></pre>
 </div>
 <div id="chapter-11" class="section level2">
 <h2>Chapter 11</h2>
-<div id="exercise-1-working-with-data-frames-review" class="section level3">
-<h3>Exercise 1: working with data frames (review)</h3>
+<div id="exercise-1-and-2-working-with-data-frames-review" class="section level3">
+<h3>Exercise 1 and 2: working with data frames (review)</h3>
 <div id="install-devtools-package-allows-installations-from-github" class="section level4">
 <h4>Install devtools package: allows installations from GitHub</h4>
 <pre class="r"><code># install.packages(&quot;devtools&quot;) - this has been commented out so it doesn&#39;t install every time a run the codes. &quot;devtools&quot; package has been installed.</code></pre>
@@ -1320,15 +1320,34 @@ unique_letters</code></pre>
 </div>
 <div id="save-this-vector-in-a-variable" class="section level4">
 <h4>Save this vector in a variable</h4>
+<div id="rbase" class="section level5">
+<h5>rbase</h5>
 <pre class="r"><code>makes &lt;- vehicles$make</code></pre>
+</div>
+<div id="dplyr" class="section level5">
+<h5>dplyr</h5>
+<pre class="r"><code>makes &lt;- select(vehicles,make)</code></pre>
+</div>
 </div>
 <div id="use-the-unique-function-to-determine-how-many-different-car-manufacturers" class="section level4">
 <h4>Use the <code>unique()</code> function to determine how many different car manufacturers</h4>
 </div>
 <div id="are-represented-by-the-data-set" class="section level4">
 <h4>are represented by the data set</h4>
+</div>
+<div id="for-dplyr-use-distinct" class="section level4">
+<h4>for dplyr, use <code>distinct()</code></h4>
+<div id="non-dplyr" class="section level5">
+<h5>non-dplyr</h5>
 <pre class="r"><code>length(unique(makes))</code></pre>
-<pre><code>## [1] 128</code></pre>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="dplyr-1" class="section level5">
+<h5>dplyr</h5>
+<pre class="r"><code>makes_dplyr &lt;- vehicles %&gt;% 
+  distinct(make) %&gt;% 
+  nrow()</code></pre>
+</div>
 </div>
 <div id="filter-the-data-set-for-vehicles-manufactured-in-1997" class="section level4">
 <h4>Filter the data set for vehicles manufactured in 1997</h4>
@@ -1357,12 +1376,25 @@ vehicles_1997</code></pre>
 </div>
 <div id="see-also-httpswww.r-bloggers.comr-sorting-a-data-frame-by-the-contents-of-a-column" class="section level4">
 <h4>See also: <a href="https://www.r-bloggers.com/r-sorting-a-data-frame-by-the-contents-of-a-column/" class="uri">https://www.r-bloggers.com/r-sorting-a-data-frame-by-the-contents-of-a-column/</a></h4>
+<pre class="r"><code>vehicles_1997 &lt;- vehicles_1997[order(vehicles$hwy),]</code></pre>
 </div>
 <div id="mutate-the-1997-cars-data-frame-to-add-a-column-average-that-has-the-average" class="section level4">
 <h4>Mutate the 1997 cars data frame to add a column <code>average</code> that has the average</h4>
 </div>
 <div id="gas-milage-between-city-and-highway-mpg-for-each-car" class="section level4">
 <h4>gas milage (between city and highway mpg) for each car</h4>
+<div id="personal-solution" class="section level5">
+<h5>Personal Solution</h5>
+<pre class="r"><code>cars_1997 &lt;- vehicles_1997 %&gt;% 
+  group_by(make) %&gt;% 
+  mutate(
+    avg = (hwy + cty) / 2
+  )</code></pre>
+</div>
+<div id="book-solution" class="section level5">
+<h5>Book Solution</h5>
+<pre class="r"><code>vehicles_1997$average &lt;- (vehicles_1997$hwy + vehicles_1997$cty) / 2</code></pre>
+</div>
 </div>
 <div id="filter-the-whole-vehicles-data-set-for-2-wheel-drive-vehicles-that-get-more" class="section level4">
 <h4>Filter the whole vehicles data set for 2-Wheel Drive vehicles that get more</h4>
@@ -1372,6 +1404,17 @@ vehicles_1997</code></pre>
 </div>
 <div id="save-this-new-data-frame-in-a-variable." class="section level4">
 <h4>Save this new data frame in a variable.</h4>
+<div id="personal-solution-1" class="section level5">
+<h5>Personal solution</h5>
+<pre class="r"><code>two_wheel_20mpg &lt;- vehicles %&gt;% 
+  filter(
+    drive == &quot;2-Wheel Drive&quot; &amp; cty &gt; 20
+  )</code></pre>
+</div>
+<div id="book-solution-1" class="section level5">
+<h5>Book solution</h5>
+<pre class="r"><code>two_wheel_20_mpg &lt;- vehicles[vehicles$drive == &quot;2-Wheel Drive&quot; &amp; vehicles$cty &gt; 20,]</code></pre>
+</div>
 </div>
 <div id="of-the-above-vehicles-what-is-the-vehicle-id-of-the-vehicle-with-the-worst" class="section level4">
 <h4>Of the above vehicles, what is the vehicle ID of the vehicle with the worst</h4>
@@ -1381,6 +1424,19 @@ vehicles_1997</code></pre>
 </div>
 <div id="hint-filter-for-the-worst-vehicle-then-select-its-id." class="section level4">
 <h4>Hint: filter for the worst vehicle, then select its ID.</h4>
+<div id="personal-solution-filtering-the-entire-row" class="section level5">
+<h5>Personal solution (filtering the entire row)</h5>
+<pre class="r"><code>worst_hwy &lt;- two_wheel_20mpg %&gt;% 
+  filter(hwy == min(hwy))</code></pre>
+</div>
+<div id="book-solution-filtering-the-entire-row" class="section level5">
+<h5>Book solution (filtering the entire row)</h5>
+<pre class="r"><code>worst_hwy2 &lt;- two_wheel_20mpg[two_wheel_20mpg$hwy == min(two_wheel_20mpg$hwy),]</code></pre>
+</div>
+<div id="book-solution-id-only" class="section level5">
+<h5>Book solution (ID only)</h5>
+<pre class="r"><code>worst_hwy_book &lt;- two_wheel_20mpg$id[two_wheel_20mpg$hwy == min(two_wheel_20mpg$hwy)]</code></pre>
+</div>
 </div>
 <div id="write-a-function-that-takes-a-year_choice-and-a-make_choice-as-parameters" class="section level4">
 <h4>Write a function that takes a <code>year_choice</code> and a <code>make_choice</code> as parameters,</h4>
@@ -1393,10 +1449,23 @@ vehicles_1997</code></pre>
 </div>
 <div id="youll-need-to-filter-more-and-do-some-selecting" class="section level4">
 <h4>You’ll need to filter more (and do some selecting)!</h4>
+<pre class="r"><code>year_make_choice &lt;- function(year_choice,make_choice) {
+  filtered &lt;- vehicles[vehicles$year == year_choice &amp; vehicles$make == make_choice,]
+  filtered[filtered$hwy == max(filtered$hwy),&quot;model&quot;]
+  
+}</code></pre>
 </div>
 <div id="what-was-the-most-efficient-honda-model-of-1995" class="section level4">
 <h4>What was the most efficient Honda model of 1995?</h4>
+<pre class="r"><code>year_make_choice(1995,&quot;Honda&quot;)</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   model      
+##   &lt;chr&gt;      
+## 1 Civic HB VX</code></pre>
 </div>
+</div>
+<div id="exercise-2-working-with-dplyr" class="section level3">
+<h3>Exercise 2: working with <code>dplyr</code></h3>
 </div>
 </div>
 </div>
